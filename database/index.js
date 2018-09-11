@@ -11,3 +11,7 @@ const userSchema = mongoose.Schema({
   losses: Number,
   gamesPlayed: Number
 });
+
+userSchema.index({id: 1}, {unique: true});
+
+let User = mongoose.Model('User', userSchema);
