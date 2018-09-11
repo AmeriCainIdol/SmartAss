@@ -1,0 +1,26 @@
+{
+  "name": "smartass",
+  "version": "1.0.0",
+  "description": "a trivia game",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jstrzesz/SmartAss.git"
+  },
+  "keywords": [
+    "smart"
+  ],
+  "author": "joshua strzeszkowski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jstrzesz/SmartAss/issues"
+  },
+  "homepage": "https://github.com/jstrzesz/SmartAss#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
