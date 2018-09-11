@@ -3,8 +3,6 @@ const express = require('express');
 const morgan = require('morgan');
 //body parser
 const bodyParser = require('body-parser');
-//nodemon
-const nodemon = require('nodemon')
 
 const app = express();
 //use the tiny version of morgan showing the http method and ping
@@ -14,7 +12,7 @@ app.use(morgan('tiny'));
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
- 
+
 
 
 let port = process.env.PORT || 3030;
