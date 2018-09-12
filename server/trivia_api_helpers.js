@@ -50,11 +50,13 @@ const allQuestionsAllCategories = (callback) => {
   request(options, callback)
 }
 
-//example http request for category + difficulty
-const getQuestionsForCategoryAndDifficulty = () => {
+//this http request will return 10 questions of a given difficulty in a given category
+//categoryId is the id of a certain category 9-32
+//difficulty is easy, medium or hard
+const getQuestionsForCategoryAndDifficulty = (categoryId, difficulty, callback) => {
   let options = {
     method: `GET`,
-    url: `https://opentdb.com/api.php?amount=10&category=11&difficulty=hard`
+    url: `https://opentdb.com/api.php?amount=10&category=${categoryId}&difficulty=${difficulty}`
   }
   request(options, callback)
 }
@@ -62,6 +64,7 @@ const getQuestionsForCategoryAndDifficulty = () => {
 const triviaHelpers = {
   countQuestionsPerCategory,
   allQuestionsAllCategories,
+  getQuestionsForCategoryAndDifficulty,
 }
 
 module.exports.triviaHelpers = triviaHelpers;
