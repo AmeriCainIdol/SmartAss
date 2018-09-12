@@ -10,7 +10,7 @@ const config = {
     path: DIST_DIR
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?/,
         include: SRC_DIR,
