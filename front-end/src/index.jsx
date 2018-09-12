@@ -8,6 +8,8 @@ class App extends React.Component {
 
   render () {
     return (<div class="container-fluid">
+      <h1>SmartAss</h1>
+      <h2>A Trivia Game</h2>
       <div class="row">
         <div class="col-md-12">
           <div class="row">

@@ -17,7 +17,7 @@ app.use(bodyParser.json())
 
 
 
-let port = process.env.PORT || 3030;
+let port = process.env.PORT || 3060;
 
 app.listen(port, function () {
   console.log(`listening on port ${port}`)
@@ -26,17 +26,18 @@ app.listen(port, function () {
 //handler for signing up
 app.post('/signup',
   () => {
-    //take the info from the fields
-    //save them to the database
-    //redirect user to login page
+//     take the info from the fields
+//     save them to the database
+//     redirect user to login page
 
   });
 
-//handler for logging in
+
+// handler for logging in
 app.get('/login',
   () => {
-    //search database for user
-    //authenticate user session
-    //redirect to game page
+//     search database for user
+//     authenticate user session
+//     redirect to game page
   })
 
