@@ -32,12 +32,14 @@ app.post('/signup',
 
   });
 
-
+app.get('/', (req, res) => {
+  res.send('works')
+})
 // handler for logging in
-app.get('/login',
-  () => {
+// app.get('/login',
+//   () => {
 //     search database for user
 //     authenticate user session
 //     redirect to game page
-  })
+  // })
 
