@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server/index.js",
-    "build": "webpack -d && cp front-end/src/index.html dist/index.html && webpack-dev-server --content-base src/ --inline",
-    "build:prod": "webpack -p && cp front-end/src/index.html dist/index.html",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "react-dev": "webpack -d --watch",
     "demon": "nodemon server/index.js"
   },
   "repository": {
@@ -34,6 +32,7 @@
     "body-parser": "^1.18.3",
     "create-react-class": "^15.6.3",
     "express": "^4.16.3",
+    "file-loader": "^2.0.0",
     "mongoose": "^5.2.14",
     "morgan": "^1.9.1",
     "react": "^16.5.0",
@@ -48,6 +47,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
     "nodemon": "^1.18.4",
-    "webpack-cli": "^3.1.0"
+    "webpack-cli": "^3.1.0",
+    "webpack-command": "^0.4.1"
   }
 }
