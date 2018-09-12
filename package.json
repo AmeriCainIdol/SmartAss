@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node server/index.js",
+    "build": "webpack -d && cp front-end/src/index.html dist/index.html && webpack-dev-server --content-base src/ --inline",
+    "build:prod": "webpack -p && cp front-end/src/index.html dist/index.html",
     "test": "echo \"Error: no test specified\" && exit 1",
     "demon": "nodemon server/index.js"
   },
@@ -25,6 +27,10 @@
     "axios": "^0.18.0",
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "body-parser": "^1.18.3",
     "create-react-class": "^15.6.3",
     "express": "^4.16.3",
@@ -32,7 +38,8 @@
     "morgan": "^1.9.1",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
-    "webpack": "^4.18.0"
+    "webpack": "^4.18.0",
+    "webpack-dev-server": "^3.1.8"
   },
   "devDependencies": {
     "eslint": "^5.5.0",
@@ -40,6 +47,7 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
-    "nodemon": "^1.18.4"
+    "nodemon": "^1.18.4",
+    "webpack-cli": "^3.1.0"
   }
 }

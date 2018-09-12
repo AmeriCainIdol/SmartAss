@@ -9,6 +9,8 @@ const app = express();
 app.use(morgan('tiny'));
 //bodyParser config options
 // parse application/x-www-form-urlencoded
+app.use(express.static(__dirname + '/../front-end/src'));
+
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
@@ -17,7 +19,7 @@ app.use(bodyParser.json())
 
 let port = process.env.PORT || 3030;
 
-app.listen(app, function () {
+app.listen(port, function () {
   console.log(`listening on port ${port}`)
 })
 
