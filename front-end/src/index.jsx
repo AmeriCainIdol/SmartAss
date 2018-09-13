@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import SignIn from './components/sign_in.jsx';
 
 class App extends React.Component {
   constructor(props){
@@ -7,7 +8,9 @@ class App extends React.Component {
   }
 
   render () {
-    return (<div className="container-fluid">
+    return (
+      
+    <div className="container-fluid">
       <h1>SmartAss</h1>
       <h2>A Trivia Game</h2>
       <div className="row">
@@ -37,21 +40,18 @@ class App extends React.Component {
             <div className="col-md-4">
               <form role="form">
                 <div className="form-group">
-
                   <label>
                     Username
 							</label>
                   <input type="email" className="form-control" id="UsernameInput" />
                 </div>
                 <div className="form-group">
-
                   <label>
                     Email address
 							</label>
                   <input type="email" className="form-control" id="EmailInput" />
                 </div>
                 <div className="form-group">
-
                   <label>
                     Password
 							</label>
@@ -65,7 +65,8 @@ class App extends React.Component {
           </div>
         </div>
       </div>
-    </div>)
+    </div>
+    )
   }
 }
 
