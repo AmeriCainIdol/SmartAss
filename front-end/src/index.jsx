@@ -9,7 +9,6 @@ class App extends React.Component {
 
   render () {
     return (
-      
     <div className="container-fluid">
       <h1>SmartAss</h1>
       <h2>A Trivia Game</h2>
