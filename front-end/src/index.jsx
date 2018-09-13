@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SignIn from './components/sign_in.jsx';
+import SignUp from './components/sign_up.jsx';
 
 class App extends React.Component {
   constructor(props){
@@ -38,6 +38,7 @@ class App extends React.Component {
 					    </table>
             </div>
             <div className="col-md-4">
+            <h3>Log In</h3>
               <form role="form">
                 <div className="form-group">
                   <label>
@@ -61,6 +62,9 @@ class App extends React.Component {
                   Submit
 						</button>
               </form>
+              <h4>New Players</h4>
+              <label>Not a player? Sign Up Here </label>
+              <button type="sign_up" className="btn">Sign Up</button>
             </div>
           </div>
         </div>
