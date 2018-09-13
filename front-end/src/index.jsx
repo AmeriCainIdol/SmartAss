@@ -7,76 +7,57 @@ class App extends React.Component {
   }
 
   render () {
-    return (<div class="container-fluid">
+    return (<div className="container-fluid">
       <h1>SmartAss</h1>
       <h2>A Trivia Game</h2>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="row">
-            <div class="col-md-8">
-              <h3>
-                h3. Lorem ipsum dolor sit amet.
-					</h3>
-              <ol>
-                <li class="list-item">
-                  Lorem ipsum dolor sit amet
-						</li>
-                <li class="list-item">
-                  Consectetur adipiscing elit
-						</li>
-                <li class="list-item">
-                  Integer molestie lorem at massa
-						</li>
-                <li class="list-item">
-                  Facilisis in pretium nisl aliquet
-						</li>
-                <li class="list-item">
-                  Nulla volutpat aliquam velit
-						</li>
-                <li class="list-item">
-                  Faucibus porta lacus fringilla vel
-						</li>
-                <li class="list-item">
-                  Aenean sit amet erat nunc
-						</li>
-                <li class="list-item">
-                  Eget porttitor lorem
-						</li>
-              </ol>
+      <div className="row">
+        <div className="col-md-12">
+          <div className="row">
+            <div className="col-md-8">
+              <h3>Leader Board</h3>
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Username</th>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Jstrzesz</td>
+                    <td>4</td>
+                    <td>0</td>
+                  </tr>
+                </tbody>
+					    </table>
             </div>
-            <div class="col-md-4">
+            <div className="col-md-4">
               <form role="form">
-                <div class="form-group">
-
-                  <label for="exampleInputEmail1">
-                    Email address
-							</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" />
-                </div>
-                <div class="form-group">
-
-                  <label for="exampleInputPassword1">
-                    Password
-							</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" />
-                </div>
-                <div class="form-group">
-
-                  <label for="exampleInputFile">
-                    File input
-							</label>
-                  <input type="file" class="form-control-file" id="exampleInputFile" />
-                  <p class="help-block">
-                    Example block-level help text here.
-							</p>
-                </div>
-                <div class="checkbox">
+                <div className="form-group">
 
                   <label>
-                    <input type="checkbox" /> Check me out
+                    Username
 							</label>
+                  <input type="email" className="form-control" id="UsernameInput" />
                 </div>
-                <button type="submit" class="btn btn-primary">
+                <div className="form-group">
+
+                  <label>
+                    Email address
+							</label>
+                  <input type="email" className="form-control" id="EmailInput" />
+                </div>
+                <div className="form-group">
+
+                  <label>
+                    Password
+							</label>
+                  <input type="password" className="form-control" id="PasswordInput" />
+                </div>
+                <button type="submit" className="btn btn-primary">
                   Submit
 						</button>
               </form>
