@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SignUp from './components/sign_up.jsx';
+import GameOver from './components/gameOver.jsx';
+import GamePage from './components/gamePage.jsx';
+import GameCreation from './components/gameCreation.jsx';
 
 class App extends React.Component {
   constructor(props){
@@ -10,8 +13,6 @@ class App extends React.Component {
   render () {
     return (
     <div className="container-fluid">
-      <h1>SmartAss</h1>
-      <h2>A Trivia Game</h2>
       <div className="row">
         <div className="col-md-12">
           <div className="row">

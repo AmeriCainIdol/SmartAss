@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 class GamePage extends React.Component {
   constructor(props) {
@@ -11,7 +10,7 @@ class GamePage extends React.Component {
       <div className="row">
         <div className="col-md-12">
           <h2>Question #</h2>
-          <p>What is real-world event is thought to be the inspiration for the destruction of Atlantis?</p>
+          <p>What real-world event is thought to be the inspiration for the destruction of Atlantis?</p>
         </div>
       </div>
       <div className="row">

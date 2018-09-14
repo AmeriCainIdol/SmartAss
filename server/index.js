@@ -24,8 +24,8 @@ app.listen(port, function () {
 })
 
 //handler for signing up
-app.post('/signup',
-  () => {
+app.post('/signup', (req, res) => {
+  res.render('sign_up');
 //     take the info from the fields
 //     save them to the database
 //     redirect user to login page
@@ -33,13 +33,13 @@ app.post('/signup',
   });
 
 app.get('/', (req, res) => {
-  res.send('works')
+  
 })
 // handler for logging in
-// app.get('/login',
-//   () => {
-//     search database for user
-//     authenticate user session
-//     redirect to game page
+// app.get('/login', (req, res) => {
+//   res.render('login');
+    // search database for user
+    // authenticate user session
+    // redirect to game page
   // })
 
