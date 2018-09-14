@@ -1,4 +1,3 @@
-const { Mongoclient } = require('mongodb');
 const mongoose = require('mongoose');
 
 const mongoUri = 'mongodb://localhost:27017';
@@ -12,6 +11,6 @@ const userSchema = mongoose.Schema({
   gamesPlayed: Number
 });
 
-userSchema.index({id: 1}, {unique: true});
+userSchema.index({ id: 1 }, { unique: true });
 
 let User = mongoose.Model('User', userSchema);

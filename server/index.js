@@ -26,9 +26,9 @@ app.listen(port, function () {
 //handler for signing up
 app.post('/signup',
   () => {
-//     take the info from the fields
-//     save them to the database
-//     redirect user to login page
+    //     take the info from the fields
+    //     save them to the database
+    //     redirect user to login page
 
   });
 
