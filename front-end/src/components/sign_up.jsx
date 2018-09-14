@@ -35,14 +35,14 @@ class SignUp extends React.Component {
               </div>
               <div className="form-group">
 
-                <label for="passwordInput">
+                <label id="passwordInput">
                   Password
 					</label>
                 <input type="password" className="form-control" id="passwordInputSign-In" />
               </div>
               <div className="form-group">
 
-                <label for="passwordInput2">
+                <label id="passwordInput2">
                   Re-Enter Password to confirm
 					</label>
                 <input type="password" className="form-control" id="passwordInputSign-InConfirm" />
