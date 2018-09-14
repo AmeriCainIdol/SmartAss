@@ -6,7 +6,9 @@ class GamePage extends React.Component {
   }
   
   render () {
-    <div className="container-fluid">
+    return (
+
+      <div className="container-fluid">
       <div className="row">
         <div className="col-md-12">
           <h2>Question #</h2>
@@ -42,6 +44,7 @@ class GamePage extends React.Component {
         </div>
       </div>
     </div>
+  )
   }
 }
 
