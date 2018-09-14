@@ -51,12 +51,13 @@ app.post('/signup',
 
 app.get('/', (request, response) => {
   res.send('works')
+
 })
 // handler for logging in
-// app.get('/login',
-//   () => {
-//     search database for user
-//     authenticate user session
-//     redirect to game page
+// app.get('/login', (req, res) => {
+//   res.render('login');
+    // search database for user
+    // authenticate user session
+    // redirect to game page
   // })
 

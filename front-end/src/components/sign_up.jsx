@@ -1,9 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
-class SignIn extends React.Component {
+class SignUp extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      
+    }
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick (value) {
+    this.setState({
+      
+    })
   }
 
   render () {
@@ -49,4 +58,4 @@ class SignIn extends React.Component {
   }
 }
 
-export default SignIn;
+export default SignUp;
