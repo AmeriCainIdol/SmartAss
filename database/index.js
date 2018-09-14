@@ -43,7 +43,7 @@ const userSchema = mongoose.Schema({
   wins: Number,
   losses: Number,
   gamesPlayed: Number,
-  averageScorePerGame: Number,
+  averageWinRate: Number,
 });
 
 
