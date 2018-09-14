@@ -1,4 +1,7 @@
 const express = require('express');
+//dbhelpers object
+const dbHelpers = require('../database/databasehelpers').dbHelpers;
+
 //morgan will intercept http requests and log them in terminal
 const morgan = require('morgan');
 //body parser
@@ -25,15 +28,30 @@ app.listen(port, function () {
 
 //handler for signing up
 app.post('/signup',
-  () => {
-    //     take the info from the fields
-    //     save them to the database
-    //     redirect user to login page
+  (request, response) => {
+    //take the info from the fields
+    const username = request.body.username;
+    const email = request.body.email;
+    const password = request.body.password;
 
+    const userObject = {
+      username,
+      email,
+      password
+    }
+
+    //save them to the database
+    const newUserReadyForSaving = dbHelpers.userSignedUp(userObject);
+    dbHelpers.saveUser(newUserReadyForSaving);
+
+    //redirect user to login page
+    response.status(201, 'OK');
+    response.end();
   });
 
-app.get('/', (req, res) => {
-  
+app.get('/', (request, response) => {
+  res.send('works')
+
 })
 // handler for logging in
 // app.get('/login', (req, res) => {
