@@ -12,7 +12,7 @@ const app = express();
 app.use(morgan('tiny'));
 //bodyParser config options
 // parse application/x-www-form-urlencoded
-app.use(express.static(__dirname + '/../front-end/src'));
+app.use(express.static(__dirname + '/../front-end/dist'));
 
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json

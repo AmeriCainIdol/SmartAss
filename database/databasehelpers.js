@@ -1,53 +1,53 @@
-const mongoose = require('mongoose');
-const config = require('../config/config')
+// const mongoose = require('mongoose');
+// const config = require('../config/config')
 
-var db = mongoose.connection;
+// var db = mongoose.connection;
 
-//NOTE: uncomment to drop database
-// mongoose.connect('mongodb://localhost/fetcher', () => {
-//   mongoose.connection.db.dropDatabase();
-// })
+// //NOTE: uncomment to drop database
+// // mongoose.connect('mongodb://localhost/fetcher', () => {
+// //   mongoose.connection.db.dropDatabase();
+// // })
 
-//FIXME: remember to add a process.env here for mlabs deploy
-const mongoDB = config.MONGODB_URI;
-//process.env.MONGODB_URI;
-//mongoose.Promise = global.Promise;
-mongoose.connect(mongoDB, {
-  keepAlive: true,
-  reconnectTries: Number.MAX_VALUE,
-  useMongoClient: true
-});
-
-
-db.on('error', function () {
-  console.log('mongoose connection error:');
-});
-
-db.once('open', function () {
-  console.log('mongoose connected successfully');
-});
-
-const userSchema = mongoose.Schema({
-  //this will give us no duplicates
-  user_id: {
-    type: Number,
-    uniqure: true,
-    index: true
-  },
-  username: String,
-  userEmail: String,
-  userPassword: String,
-  wins: Number,
-  losses: Number,
-  gamesPlayed: Number,
-  averageScorePerGame: Number,
-});
+// //FIXME: remember to add a process.env here for mlabs deploy
+// const mongoDB = config.MONGODB_URI;
+// //process.env.MONGODB_URI;
+// //mongoose.Promise = global.Promise;
+// mongoose.connect(mongoDB, {
+//   keepAlive: true,
+//   reconnectTries: Number.MAX_VALUE,
+//   useMongoClient: true
+// });
 
 
-const User = mongoose.Model('User', userSchema);
+// db.on('error', function () {
+//   console.log('mongoose connection error:');
+// });
+
+// db.once('open', function () {
+//   console.log('mongoose connected successfully');
+// });
+
+// const userSchema = mongoose.Schema({
+//   //this will give us no duplicates
+//   user_id: {
+//     type: Number,
+//     unique: true,
+//     index: true
+//   },
+//   username: String,
+//   userEmail: String,
+//   userPassword: String,
+//   wins: Number,
+//   losses: Number,
+//   gamesPlayed: Number,
+//   averageScorePerGame: Number,
+// });
 
 
+// const User = mongoose.Model('User', userSchema);
 
+
+const User = require('./index').User;
 
 
 //NOTE: the user has 3 fields, name, password, email so we're going to fill in the rest of the schema with this function, use this function to create the user that we'll pass into our database with saveUser
@@ -94,6 +94,20 @@ const saveUser = (userObject) => {
       }
     });
 }
+
+//after the game finishes update the userObject
+const updateUserAfterGame = (userObject) => {
+  //find user in database
+  User.find({ username: userObject.username }),
+    (err, docs) => {
+      if (err) {
+        console.log('error updating user object: ', err)
+      } else {
+
+      }
+    }
+  //update user with stats from game
+};
 
 
 
