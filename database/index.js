@@ -1,4 +1,3 @@
-const { Mongoclient } = require('mongodb');
 const mongoose = require('mongoose');
 
 const mongoUri = 'mongodb://localhost:27017';
