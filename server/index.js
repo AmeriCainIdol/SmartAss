@@ -49,9 +49,22 @@ app.post('/signup',
     response.end();
   });
 
+
+//handler for changing the user stats that won the game
+app.post('/gameover',
+  (request, response) => {
+    const userObjectThatWonTheGame = request.body
+    //send the whole userObject to dbHelpers.updateUserAfterGame
+    dbHelpers.updateUserAfterGame(userObjectThatWonTheGame);
+    response.status(201, 'OK');
+    response.end();
+  });
+
 app.get('/', (request, response) => {
   res.send('works')
 })
+
+
 // handler for logging in
 // app.get('/login',
 //   () => {
