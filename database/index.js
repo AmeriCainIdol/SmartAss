@@ -1,16 +1,52 @@
 const mongoose = require('mongoose');
+const config = require('../config/config')
 
-const mongoUri = 'mongodb://localhost:27017';
-mongoose.connect(mongoUri);
+var db = mongoose.connection;
 
-const userSchema = mongoose.Schema({
-  id: Number,
-  username: String,
-  wins: Number,
-  losses: Number,
-  gamesPlayed: Number
+//NOTE: uncomment to drop database
+// mongoose.connect('mongodb://localhost/fetcher', () => {
+//   mongoose.connection.db.dropDatabase();
+// })
+
+//FIXME: remember to add a process.env here for mlabs deploy
+const mongoDB = config.MONGODB_URI;
+//process.env.MONGODB_URI;
+//mongoose.Promise = global.Promise;
+mongoose.connect(mongoDB, {
+  keepAlive: true,
+  reconnectTries: Number.MAX_VALUE,
+  //deprecation warning fix
+  useNewUrlParser: true,
+});
+//deprecation warning fix
+mongoose.set('useCreateIndex', true);
+
+
+db.on('error', function () {
+  console.log('mongoose connection error:');
 });
 
-userSchema.index({ id: 1 }, { unique: true });
+db.once('open', function () {
+  console.log('mongoose connected successfully');
+});
 
-let User = mongoose.Model('User', userSchema);
+const userSchema = mongoose.Schema({
+  //this will give us no duplicates
+  user_id: {
+    type: Number,
+    unique: true,
+    index: true
+  },
+  username: String,
+  userEmail: String,
+  userPassword: String,
+  wins: Number,
+  losses: Number,
+  gamesPlayed: Number,
+  averageScorePerGame: Number,
+});
+
+
+const User = mongoose.model('User', userSchema);
+
+module.exports.User = User;
