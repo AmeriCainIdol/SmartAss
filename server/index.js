@@ -24,11 +24,11 @@ app.listen(port, function () {
 })
 
 //handler for signing up
-app.post('/signup', (req, res) => {
-  res.render('sign_up');
-//     take the info from the fields
-//     save them to the database
-//     redirect user to login page
+app.post('/signup',
+  () => {
+    //     take the info from the fields
+    //     save them to the database
+    //     redirect user to login page
 
   });
 

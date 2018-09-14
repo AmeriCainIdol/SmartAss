@@ -13,6 +13,9 @@ class App extends React.Component {
   render () {
     return (
     <div className="container-fluid">
+      <h1>Smart-Ass™</h1>
+      <h2>A Trivia Game</h2>
+      <h3>© 2018</h3>
       <div className="row">
         <div className="col-md-12">
           <div className="row">
