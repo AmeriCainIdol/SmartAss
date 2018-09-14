@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import SignUp from './sign_up.jsx';
+import GameCreation from './gameCreation.jsx';
 
 class Home extends React.Component {
   constructor(props) {
@@ -37,7 +38,13 @@ class Home extends React.Component {
                     </tr>
                   </tbody>
                 </table>
+                  <h4>Create Game</h4>
+                  <Link to="/gameCreation">
+                    <button type="submit" className="btn btn-primary">Create Game</button>
+                    <Route path="/gameCreation" component={GameCreation} />
+                  </Link>
               </div>
+
               <div className="col-md-4">
                 <h3>Log In</h3>
                 <form role="form">

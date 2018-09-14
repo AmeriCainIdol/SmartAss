@@ -6,7 +6,9 @@ class GameCreation extends React.Component {
   }
   
   render () {
-    <div className="container-fluid">
+    return (
+
+      <div className="container-fluid">
       <div className="row">
         <div className="col-md-4">
           <h1>Players in Game</h1>
@@ -27,6 +29,7 @@ class GameCreation extends React.Component {
         </div>
       </div>
     </div>
+  )
   }
 }
 export default GameCreation;

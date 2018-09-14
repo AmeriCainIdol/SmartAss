@@ -21,7 +21,10 @@ class App extends React.Component {
 
   render () {
     return (
-      <Home />
+      <Router>
+        <Route path="/" component={ Home } />
+
+      </Router>
     )
   }
 }
