@@ -27,7 +27,7 @@ app.listen(port, function () {
 })
 
 //handler for signing up
-app.post('/signup',
+app.post('/sign_up',
   (request, response) => {
     //take the info from the fields
     const username = request.body.username;

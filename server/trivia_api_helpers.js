@@ -65,7 +65,7 @@ const triviaHelpers = {
   countQuestionsPerCategory,
   allQuestionsAllCategories,
   getQuestionsForCategoryAndDifficulty,
-  trivia_categories,
+  trivia_categories
 }
 
 module.exports.triviaHelpers = triviaHelpers;

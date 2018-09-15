@@ -20,13 +20,16 @@ class SignUp extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         const newUser = {
-            username: this.state.name,
-            email: this.state.email,
-            passwordinput: this.state.passwordinput,
-            passwordInput2: this.state.passwordinput2,
+            // username: this.state.username,
+            // email: this.state.email,
+            // passwordinput: this.state.passwordinput,
+            // passwordInput2: this.state.passwordinput2,
+            [event.target.name]: event.target.value
         }
 
-        axios.post('/signup', { newUser })
+        axios.post('localhost:3060/sign_up', {
+            params: { newUser }
+        })
             .then((response) => {
                 console.log(response);
             }).catch(error => {
@@ -34,37 +37,13 @@ class SignUp extends React.Component {
             })
     }
 
-
-    // onSubmit(value) {
-    //     //axios.post('/signup').then(request, response)
-    //     // axios.post('/user', {
-    //     //     firstName: 'Fred',
-    //     //     lastName: 'Flintstone'
-    //     // })
-    //     //     .then(function(response) {
-    //     //         console.log(response);
-    //     //     })
-    //     //     .catch(function(error) {
-    //     //         console.log(error);
-    //     //     });
-    //     axios.post('/signup').then(
-    //         (request, response) => {
-    //             console.log(request);
-    //             console.log(response);
-    //         }
-    //     )
-    //     this.setState({
-
-    //     })
-    // }
-
     render() {
         return (
             <div className="container-fluid">
                 <h1>Smart-Ass Sign Up</h1>
                 <div className="row">
                     <div className="col-md-12">
-                        <form role="form">
+                        <form role="form" onSubmit={this.handleSubmit}>
 
                             <div className="form-group">
                                 <label>
@@ -94,7 +73,7 @@ class SignUp extends React.Component {
                                 <input type="password" name="passwordinput2" className="form-control" id="passwordInputSign-InConfirm" onChange={this.handleChange} />
                             </div>
 
-                            <button type="submit" className="btn btn-primary" onSubmit={this.handleSubmit}>
+                            <button type="submit" className="btn btn-primary">
                                 Submit
 				                    </button>
 
