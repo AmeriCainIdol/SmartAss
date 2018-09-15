@@ -20,6 +20,11 @@ const config = {
         }
       }
     ] 
+  },
+  node: {
+    net: 'empty',
+    tls: 'empty',
+    fs: 'empty'
   }
 };
 

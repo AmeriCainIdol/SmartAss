@@ -19,7 +19,7 @@ class SignUp extends React.Component {
         this.onSubmit = this.onSubmit.bind(this);
     }
 
-    handleSubmit = event => {
+    handleSubmit (event) {
         this.setState({
             //get the value in the form fields
             username: event.target.value,
@@ -28,7 +28,7 @@ class SignUp extends React.Component {
         })
     }
 
-    onSubmit = event => {
+    onSubmit (event)  {
         event.preventDefault();
         const newUser = {
             username: this.state.name,
