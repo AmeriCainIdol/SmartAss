@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Switch, Link, Route } from 'react-router-dom';
+import GamePage from './gamePage.jsx';
 
 class GameCreation extends Component {
   constructor(props) {
     super(props);
-  }
+  }    
   
   render () {
     return (
@@ -24,7 +26,13 @@ class GameCreation extends Component {
             </div>
           </div>
           <div className="col-md-4">
-            <button type="button" className="btn btn-success">Create Game</button>
+            <BrowserRouter>
+              <div>
+                <Link to="/gamePage">
+                  <button type="button" className="btn btn-success">Create Game</button>
+                </Link>
+              </div>
+            </BrowserRouter>
           </div>
         </div>
       </div>

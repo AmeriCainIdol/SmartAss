@@ -30,6 +30,7 @@ class App extends Component {
               <Route exact={true} path="/" component={ Home } />
               <Route path="/sign_up" component={ SignUp } />
               <Route path="/gameCreation" component={ GameCreation } />
+              {/* <Route path="/gamePage" component={ GamePage } /> */}
             </Switch>
         </div>
       </BrowserRouter>

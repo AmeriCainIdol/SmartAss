@@ -1,12 +1,13 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Navigation = () => {
   return (
     <div>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/sign_up">Sign Up</NavLink>
-      <NavLink to="/gameCreation">Create Game</NavLink>
+      <Link to="/">Home</Link>
+      <Link to="/sign_up">Sign Up</Link>
+      <Link to="/gameCreation">Create Game</Link>
+      <Link to="/gamePage">Game</Link>
     </div>
   )
 }
