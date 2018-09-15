@@ -1,6 +1,8 @@
 const express = require('express');
 //dbhelpers object
 const dbHelpers = require('../database/databasehelpers').dbHelpers;
+//require cors
+const cors = require('cors');
 
 //morgan will intercept http requests and log them in terminal
 const morgan = require('morgan');
@@ -17,6 +19,9 @@ app.use(express.static(__dirname + '/../front-end/dist'));
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
+
+//enable cors
+app.use(cors());
 
 
 
