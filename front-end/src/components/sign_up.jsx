@@ -1,6 +1,7 @@
 import React from 'react';
 //import '/css file'
 //import axios for http requests
+import axios from 'axios'
 
 class SignUp extends React.Component {
     constructor(props) {
@@ -8,8 +9,11 @@ class SignUp extends React.Component {
         this.state = {
 
             //username: ''
+            username: '',
             //password: ''
+            passwordinput: '',
             //re-enter password: ''
+            passwordinput2: '',
 
         }
         this.onClick = this.onClick.bind(this);
