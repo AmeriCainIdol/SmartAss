@@ -16,25 +16,55 @@ class SignUp extends React.Component {
             passwordinput2: '',
 
         }
-        this.onClick = this.onClick.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
-    onClick(value) {
-        //axios.post('/signup').then(request, response)
-        // axios.post('/user', {
-        //     firstName: 'Fred',
-        //     lastName: 'Flintstone'
-        // })
-        //     .then(function(response) {
-        //         console.log(response);
-        //     })
-        //     .catch(function(error) {
-        //         console.log(error);
-        //     });
+    handleSubmit = event => {
         this.setState({
-
+            //get the value in the form fields
+            username: event.target.value,
+            passwordinput: event.target.value,
+            passwordinput2: event.taget.value,
         })
     }
+
+    onSubmit = event => {
+        event.preventDefault();
+        const newUser = {
+            username: this.state.name,
+            passwordinput: this.state.passwordinput,
+            passwordInput2: this.state.passwordinput2,
+        }
+
+        axios.post('/signup', { newUser })
+            .then((request, response) => {
+                console.log(request);
+                console.log(response);
+            })
+    }
+
+    // onSubmit(value) {
+    //     //axios.post('/signup').then(request, response)
+    //     // axios.post('/user', {
+    //     //     firstName: 'Fred',
+    //     //     lastName: 'Flintstone'
+    //     // })
+    //     //     .then(function(response) {
+    //     //         console.log(response);
+    //     //     })
+    //     //     .catch(function(error) {
+    //     //         console.log(error);
+    //     //     });
+    //     axios.post('/signup').then(
+    //         (request, response) => {
+    //             console.log(request);
+    //             console.log(response);
+    //         }
+    //     )
+    //     this.setState({
+
+    //     })
+    // }
 
     render() {
         return (
@@ -51,26 +81,26 @@ class SignUp extends React.Component {
 
                                 <label>
                                     Email address
-					</label>
+					                      </label>
                                 <input type="email" className="form-control" id="EmailInputSign-In" />
                             </div>
                             <div className="form-group">
 
                                 <label id="passwordInput">
                                     Password
-					</label>
+					                      </label>
                                 <input type="password" className="form-control" id="passwordInputSign-In" />
                             </div>
                             <div className="form-group">
 
                                 <label id="passwordInput2">
                                     Re-Enter Password to confirm
-					</label>
+					                      </label>
                                 <input type="password" className="form-control" id="passwordInputSign-InConfirm" />
                             </div>
                             <button type="submit" className="btn btn-primary">
                                 Submit
-				</button>
+				                    </button>
                         </form>
                     </div>
                 </div>
