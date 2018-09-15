@@ -71,28 +71,28 @@ class SignUp extends React.Component {
                                 <label>
                                     Create Username
                                 </label>
-                                <input type="text" name="username" className="form-control" id="UsernameCreate" />
+                                <input type="text" name="username" className="form-control" id="UsernameCreate" onChange={this.handleChange} />
                             </div>
 
                             <div className="form-group">
                                 <label>
                                     Email address
 					                      </label>
-                                <input type="text" name="email" className="form-control" id="EmailInputSign-In" />
+                                <input type="text" name="email" className="form-control" id="EmailInputSign-In" onChange={this.handleChange} />
                             </div>
 
                             <div className="form-group">
                                 <label id="passwordInput">
                                     Password
 					                      </label>
-                                <input type="password" name="passwordinput" className="form-control" id="passwordInputSign-In" />
+                                <input type="password" name="passwordinput" className="form-control" id="passwordInputSign-In" onChange={this.handleChange} />
                             </div>
 
                             <div className="form-group">
                                 <label id="passwordInput2">
                                     Re-Enter Password to confirm
 					                      </label>
-                                <input type="password" name="passwordinput2" className="form-control" id="passwordInputSign-InConfirm" />
+                                <input type="password" name="passwordinput2" className="form-control" id="passwordInputSign-InConfirm" onChange={this.handleChange} />
                             </div>
 
                             <button type="submit" className="btn btn-primary">
