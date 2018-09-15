@@ -9,29 +9,29 @@ import GameCreation from './components/gameCreation.jsx';
 import Navigation from './components/navigation.jsx';
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
 
     }
   }
 
-  signUp () {
+  signUp() {
 
   }
 
-  render () {
+  render() {
     return (
-      
+
       <BrowserRouter>
         <div>
           <Navigation />
-            <Switch>
-              <Route exact={true} path="/" component={ Home } />
-              <Route path="/sign_up" component={ SignUp } />
-              <Route path="/gameCreation" component={ GameCreation } />
-              {/* <Route path="/gamePage" component={ GamePage } /> */}
-            </Switch>
+          <Switch>
+            <Route exact={true} path="/" component={Home} />
+            <Route path="/sign_up" component={SignUp} />
+            <Route path="/gameCreation" component={GameCreation} />
+            <Route path="/gamePage" component={GamePage} />
+          </Switch>
         </div>
       </BrowserRouter>
     )
