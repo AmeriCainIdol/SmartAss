@@ -96,7 +96,7 @@ class SignUp extends React.Component {
                                 <input type="password" name="passwordinput2" className="form-control" id="passwordInputSign-InConfirm" onChange={this.handleChange} />
                             </div>
 
-                            <button type="submit" className="btn btn-primary">
+                            <button type="submit" className="btn btn-primary" onSubmit={this.handleSubmit}>
                                 Submit
 				                    </button>
 
