@@ -29,9 +29,10 @@ class SignUp extends React.Component {
         }
 
         axios.post('/signup', { newUser })
-            .then((request, response) => {
-                console.log(request);
+            .then((response) => {
                 console.log(response);
+            }).catch(error => {
+                console.log(error);
             })
     }
 
