@@ -7,12 +7,13 @@ import GameOver from './components/gameOver.jsx';
 import GamePage from './components/gamePage.jsx';
 import GameCreation from './components/gameCreation.jsx';
 import Navigation from './components/navigation.jsx';
+import triviaHelpers from '../../server/trivia_api_helpers.js'
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      triviaHelpers: triviaHelpers
     }
   }
 
