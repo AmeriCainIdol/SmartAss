@@ -1,15 +1,22 @@
 import React from 'react';
+//import '/css file'
+//import axios for http requests
 
 class SignUp extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+
+      //username: ''
+      //password: ''
+      //re-enter password: ''
       
     }
     this.onClick = this.onClick.bind(this);
   }
 
   onClick (value) {
+    //axios.post('/signup').then(request, response)
     this.setState({
       
     })
