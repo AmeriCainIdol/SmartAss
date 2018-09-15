@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './components/home.jsx';
 import SignUp from './components/sign_up.jsx';
 import GameOver from './components/gameOver.jsx';
@@ -26,11 +26,11 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Navigation />
-            <div>
+            <Switch>
               <Route exact={true} path="/" component={ Home } />
               <Route path="/sign_up" component={ SignUp } />
               <Route path="/gameCreation" component={ GameCreation } />
-            </div>
+            </Switch>
         </div>
       </BrowserRouter>
     )
