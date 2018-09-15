@@ -35,7 +35,9 @@
     "file-loader": "^2.0.0",
     "json-parse-better-errors": "^1.0.2",
     "morgan": "^1.9.1",
+    "react-bootstrap": "^0.32.4",
     "react-dom": "^16.5.0",
+    "react-overlays": "^0.4.3",
     "request": "^2.88.0",
     "webpack-command": "^0.4.1",
     "webpack-dev-server": "^3.1.8"
