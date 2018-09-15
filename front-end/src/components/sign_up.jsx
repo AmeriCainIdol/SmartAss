@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios'
+import axios from 'axios';
 
 class SignUp extends React.Component {
     constructor(props) {
@@ -10,7 +10,7 @@ class SignUp extends React.Component {
             passwordinput: '',
             passwordinput2: '',
         }
-        this.onSubmit = this.onSubmit.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(event) {
@@ -33,6 +33,30 @@ class SignUp extends React.Component {
                 console.log(error);
             })
     }
+
+
+    // onSubmit(value) {
+    //     //axios.post('/signup').then(request, response)
+    //     // axios.post('/user', {
+    //     //     firstName: 'Fred',
+    //     //     lastName: 'Flintstone'
+    //     // })
+    //     //     .then(function(response) {
+    //     //         console.log(response);
+    //     //     })
+    //     //     .catch(function(error) {
+    //     //         console.log(error);
+    //     //     });
+    //     axios.post('/signup').then(
+    //         (request, response) => {
+    //             console.log(request);
+    //             console.log(response);
+    //         }
+    //     )
+    //     this.setState({
+
+    //     })
+    // }
 
     render() {
         return (
