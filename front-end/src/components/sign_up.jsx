@@ -10,11 +10,11 @@ class SignUp extends React.Component {
             passwordinput: '',
             passwordinput2: '',
         }
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     handleChange(event) {
-        this.setState({ [event.target.name]: event.target.value })
+        this.setState({ [event.target.name]: event.target.value });
     }
 
     handleSubmit(event) {
