@@ -7,28 +7,19 @@ class SignUp extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-
-            //username: ''
             username: '',
-            //password: ''
+            email: '',
             passwordinput: '',
-            //re-enter password: ''
             passwordinput2: '',
-
         }
         this.onSubmit = this.onSubmit.bind(this);
     }
 
-    handleSubmit(event) {
-        this.setState({
-            //get the value in the form fields
-            username: event.target.value,
-            passwordinput: event.target.value,
-            passwordinput2: event.taget.value,
-        })
+    handleChange(event) {
+        this.setState({ [event.target.name]: event.target.value })
     }
 
-    onSubmit(event) {
+    handleSubmit(event) {
         event.preventDefault();
         const newUser = {
             username: this.state.name,
