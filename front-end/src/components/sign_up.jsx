@@ -1,6 +1,4 @@
 import React from 'react';
-//import '/css file'
-//import axios for http requests
 import axios from 'axios'
 
 class SignUp extends React.Component {
@@ -35,30 +33,6 @@ class SignUp extends React.Component {
                 console.log(error);
             })
     }
-
-
-    // onSubmit(value) {
-    //     //axios.post('/signup').then(request, response)
-    //     // axios.post('/user', {
-    //     //     firstName: 'Fred',
-    //     //     lastName: 'Flintstone'
-    //     // })
-    //     //     .then(function(response) {
-    //     //         console.log(response);
-    //     //     })
-    //     //     .catch(function(error) {
-    //     //         console.log(error);
-    //     //     });
-    //     axios.post('/signup').then(
-    //         (request, response) => {
-    //             console.log(request);
-    //             console.log(response);
-    //         }
-    //     )
-    //     this.setState({
-
-    //     })
-    // }
 
     render() {
         return (
