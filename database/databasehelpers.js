@@ -37,7 +37,8 @@ const saveUser = (userObject) => {
           })
       } else {
         //the user exists
-        window.alert('user already exists');
+        console.log('DAMN');
+        //window.alert('user already exists');
         //FIXME: do something else here maybe
       }
     });
