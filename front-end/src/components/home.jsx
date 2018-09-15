@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import SignUp from './sign_up.jsx';
 import GameCreation from './gameCreation.jsx';
 
-class Home extends React.Component {
+class Home extends Component {
   constructor(props) {
     super(props);
   }
@@ -74,7 +74,8 @@ class Home extends React.Component {
                 <h5>Not a player? Sign Up Here </h5>
                 <Link to="/sign_up">
                   <button type="submit" className="btn btn-primary">Sign Up</button>
-                  <Route path="/sign_up" component={SignUp} />
+
+                  <Route path="/sign_up" component={ SignUp } />
                 </Link>
               </div>
             </div>
