@@ -23,6 +23,7 @@ class SignUp extends React.Component {
         event.preventDefault();
         const newUser = {
             username: this.state.name,
+            email: this.state.email,
             passwordinput: this.state.passwordinput,
             passwordInput2: this.state.passwordinput2,
         }
