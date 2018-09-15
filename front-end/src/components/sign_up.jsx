@@ -19,7 +19,7 @@ class SignUp extends React.Component {
         this.onSubmit = this.onSubmit.bind(this);
     }
 
-    handleSubmit = event => {
+    handleSubmit(event) {
         this.setState({
             //get the value in the form fields
             username: event.target.value,
@@ -28,7 +28,7 @@ class SignUp extends React.Component {
         })
     }
 
-    onSubmit = event => {
+    onSubmit(event) {
         event.preventDefault();
         const newUser = {
             username: this.state.name,
@@ -42,6 +42,7 @@ class SignUp extends React.Component {
                 console.log(response);
             })
     }
+
 
     // onSubmit(value) {
     //     //axios.post('/signup').then(request, response)
@@ -73,34 +74,39 @@ class SignUp extends React.Component {
                 <div className="row">
                     <div className="col-md-12">
                         <form role="form">
-                            <div className="form-group">
-                                <label>Create Username</label>
-                                <input type="email" className="form-control" id="UsernameCreate" />
-                            </div>
-                            <div className="form-group">
 
+                            <div className="form-group">
+                                <label>
+                                    Create Username
+                                </label>
+                                <input type="text" name="username" className="form-control" id="UsernameCreate" />
+                            </div>
+
+                            <div className="form-group">
                                 <label>
                                     Email address
 					                      </label>
-                                <input type="email" className="form-control" id="EmailInputSign-In" />
+                                <input type="text" name="email" className="form-control" id="EmailInputSign-In" />
                             </div>
-                            <div className="form-group">
 
+                            <div className="form-group">
                                 <label id="passwordInput">
                                     Password
 					                      </label>
-                                <input type="password" className="form-control" id="passwordInputSign-In" />
+                                <input type="password" name="passwordinput" className="form-control" id="passwordInputSign-In" />
                             </div>
-                            <div className="form-group">
 
+                            <div className="form-group">
                                 <label id="passwordInput2">
                                     Re-Enter Password to confirm
 					                      </label>
-                                <input type="password" className="form-control" id="passwordInputSign-InConfirm" />
+                                <input type="password" name="passwordinput2" className="form-control" id="passwordInputSign-InConfirm" />
                             </div>
+
                             <button type="submit" className="btn btn-primary">
                                 Submit
 				                    </button>
+
                         </form>
                     </div>
                 </div>
@@ -108,5 +114,8 @@ class SignUp extends React.Component {
         )
     }
 }
+
+
+
 
 export default SignUp;
