@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Link, Route } from 'react-router-dom';
 import GamePage from './gamePage.jsx';
+import request from 'request';
+import triviaHelpers from '../../../server/trivia_api_helpers.js';
 
 class GameCreation extends Component {
   constructor(props) {
     super(props);
+    console.log(triviaHelpers)
   }    
   
   render () {
