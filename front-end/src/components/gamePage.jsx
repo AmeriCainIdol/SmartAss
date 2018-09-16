@@ -40,20 +40,20 @@ class GamePage extends React.Component {
             <table className="table">
               <tbody>
                 <tr className="first-option">
-                  <td>A</td>
+                  <td style={{ background: this.color(0) }} onClick={() => this.toggleSelector(0)}>A</td>
                   <td style={{background: this.color(0)}} onClick={() => this.toggleSelector(0)}>Eruption of Mount Vesuvius</td>
                 </tr>
                 <tr className="second-option">
-                  <td>B</td>
-                  <td>The siege of Troy</td>
+                  <td style={{ background: this.color(1) }} onClick={() => this.toggleSelector(1)}>B</td>
+                  <td style={{ background: this.color(1) }} onClick={() => this.toggleSelector(1)}>The siege of Troy</td>
                 </tr>
                 <tr className="third-option">
-                  <td>C</td>
-                  <td>The minoan eruption of Santorini</td>
+                  <td style={{ background: this.color(2) }} onClick={() => this.toggleSelector(2)}>C</td>
+                  <td style={{ background: this.color(2) }} onClick={() => this.toggleSelector(2)}>The minoan eruption of Santorini</td>
                 </tr>
                 <tr className="fourth-option">
-                  <td>D</td>
-                  <td>The asteroid that killed the dinosaurs</td>
+                  <td style={{ background: this.color(3) }} onClick={() => this.toggleSelector(3)}>D</td>
+                  <td style={{ background: this.color(3) }} onClick={() => this.toggleSelector(3)}>The asteroid that killed the dinosaurs</td>
                 </tr>
               </tbody>
             </table>
