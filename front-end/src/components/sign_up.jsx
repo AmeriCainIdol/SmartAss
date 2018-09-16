@@ -10,28 +10,31 @@ class SignUp extends React.Component {
             passwordinput: '',
             passwordinput2: '',
         }
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
 
     handleChange(event) {
+        console.log({ [event.target.name]: event.target.value });
         this.setState({ [event.target.name]: event.target.value });
     }
 
     handleSubmit(event) {
         event.preventDefault();
         const newUser = {
-            // username: this.state.username,
-            // email: this.state.email,
-            // passwordinput: this.state.passwordinput,
-            // passwordInput2: this.state.passwordinput2,
-            [event.target.name]: event.target.value
+            username: this.state.username,
+            email: this.state.email,
+            passwordinput: this.state.passwordinput,
+            passwordinput2: this.state.passwordinput2
         }
+        //FIXME: passwords need to match before moving on!
 
-        axios.post('localhost:3060/sign_up', {
-            params: { newUser }
-        })
+        //const userReadyForPost = JSON.stringify(newUser);
+        //console.log(newUser);
+        axios.post('/sign_up', newUser)
             .then((response) => {
-                console.log(response);
+                //console.log(userReadyForPost)
+                console.log('axios post from form submit on signup:', response);
             }).catch(error => {
                 console.log(error);
             })
