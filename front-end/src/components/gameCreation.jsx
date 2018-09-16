@@ -11,7 +11,8 @@ class GameCreation extends Component {
     this.state = {
       categoryIsOpen: false,
       difficultyIsOpen: false,
-      category: ''
+      category: '',
+      difficulty: ''
     }
     this.toggleOpenCategory = this.toggleOpenCategory.bind(this);
     this.dropDownClick = this.dropDownClick.bind(this);
@@ -52,8 +53,9 @@ class GameCreation extends Component {
                 <tr>
                   <th>Players In Game</th>
                   <th>Category</th>
-                  <th>Category Selection</th>
                   <th>Difficulty</th>
+                  <th>Category Selection</th>
+                  <th>Difficulty Selection</th>
                 </tr>
               </thead>
               <tbody>
@@ -63,6 +65,9 @@ class GameCreation extends Component {
                   </td>
                   <td>
                     {this.state.category}
+                  </td>
+                  <td>
+                    {this.state.difficulty}
                   </td>
                   <td>
                     <div className="dropdown" onClick={this.toggleOpenCategory}>
