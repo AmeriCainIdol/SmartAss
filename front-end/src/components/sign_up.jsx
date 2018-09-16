@@ -9,20 +9,38 @@ class SignUp extends React.Component {
             email: '',
             passwordinput: '',
             passwordinput2: '',
-            //uniqure user validation
+            //unique user validation
             userIsUnique: false,
+
             //password validation
-            passwordValidationErrors: { passwordInput: '', passwordInput2: '' },
-            passwordsValid: false,
+            // passwordValidationErrors: { passwordInput: '', passwordInput2: '' },
+            // passwordValid: false,
+            formValid: false,
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        //this.validatePasswords = this.validatePasswords(this);
     }
 
     handleChange(event) {
-        //console.log({ [event.target.name]: event.target.value });
+        //console.log(event.target.name, event.target.value);
         this.setState({ [event.target.name]: event.target.value });
+        //get the state in password input fields
+        const newUser = {
+            email: this.state.email,
+            passwordinput: this.state.passwordinput,
+            passwordinput2: this.state.passwordinput2,
+        }
+        //make sure they match
+        if (newUser.passwordinput === newUser.passwordinput2) {
+            this.setState({ formValid: true })
+        } else {
+            //change state in form valid
+            this.setState({ formValid: false })
+        }
     }
+
+
 
     handleSubmit(event) {
         event.preventDefault();
@@ -32,7 +50,8 @@ class SignUp extends React.Component {
             passwordinput: this.state.passwordinput,
             passwordinput2: this.state.passwordinput2
         }
-        //FIXME: passwords need to match before moving on!
+
+        //console.log(passwordinput, passwordinput2)
 
         axios.post('/sign_up', newUser)
             .then((response) => {
@@ -68,17 +87,16 @@ class SignUp extends React.Component {
                                 <label id="passwordInput">
                                     Password
 					                      </label>
-                                <input type="password" name="passwordinput" className="form-control" id="passwordInputSign-In" onChange={this.handleChange} value={this.state.passwordinput} />
+                                <input type="password" name="passwordinput" className="form-control" id="passwordInputSign-In" onChange={this.handleChange} />
                             </div>
 
                             <div className="form-group">
                                 <label id="passwordInput2">
                                     Re-Enter Password to confirm
 					                      </label>
-                                <input type="password" name="passwordinput2" className="form-control" id="passwordInputSign-InConfirm" onChange={this.handleChange} value={this.state.passwordinput2} />
+                                <input type="password" name="passwordinput2" className="form-control" id="passwordInputSign-InConfirm" onChange={this.handleChange} />
                             </div>
-
-                            <button type="submit" className="btn btn-primary">
+                            <button type="submit" className="btn btn-primary" disabled={this.state.formValid}>
                                 Submit
 				                    </button>
 

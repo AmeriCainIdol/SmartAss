@@ -27,6 +27,8 @@ app.use(bodyParser.json())
 
 let port = process.env.PORT || 3060;
 
+let redirectTest = `localhost:3060`
+
 app.listen(port, function () {
   console.log(`listening on port ${port}`)
 })
@@ -60,11 +62,7 @@ app.post('/sign_up',
     const newUserReadyForSaving = dbHelpers.userSignedUp(userObject);
     //console.log(newUserReadyForSaving);
 
-    dbHelpers.saveUser(newUserReadyForSaving);
-
-    //redirect user to login page
-    response.status(201, 'OK');
-    response.end();
+    dbHelpers.saveUser(newUserReadyForSaving, response);
   });
 
 
@@ -79,10 +77,7 @@ app.post('/gameover',
     response.end();
   });
 
-app.get('/', (request, response) => {
-  res.send('works')
-
-})
+app.get('*', redirectTest);
 
 
 // handler for logging in
