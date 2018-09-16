@@ -9,6 +9,11 @@ class SignUp extends React.Component {
             email: '',
             passwordinput: '',
             passwordinput2: '',
+            //uniqure user validation
+            userIsUnique: false,
+            //password validation
+            passwordValidationErrors: { passwordInput: '', passwordInput2: '' },
+            passwordsValid: false,
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
