@@ -10,6 +10,9 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
 const app = express();
+
+//enable cors
+app.use(cors());
 //use the tiny version of morgan showing the http method and ping
 app.use(morgan('tiny'));
 //bodyParser config options
@@ -20,9 +23,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-//enable cors
-app.use(cors());
-
 
 
 let port = process.env.PORT || 3060;
@@ -30,6 +30,13 @@ let port = process.env.PORT || 3060;
 app.listen(port, function () {
   console.log(`listening on port ${port}`)
 })
+
+//getting cors to work
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 //handler for signing up
 app.post('/sign_up',

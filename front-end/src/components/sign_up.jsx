@@ -27,12 +27,13 @@ class SignUp extends React.Component {
             [event.target.name]: event.target.value
         }
 
-        axios.post('localhost:3060/sign_up', {
+        axios.post('/sign_up', {
             params: { newUser }
         })
             .then((response) => {
                 console.log(response);
             }).catch(error => {
+                console.log('fuck')
                 console.log(error);
             })
     }
