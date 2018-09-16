@@ -58,7 +58,8 @@ app.post('/sign_up',
 
     //save them to the database
     const newUserReadyForSaving = dbHelpers.userSignedUp(userObject);
-    console.log(newUserReadyForSaving);
+    //console.log(newUserReadyForSaving);
+
     dbHelpers.saveUser(newUserReadyForSaving);
 
     //redirect user to login page
