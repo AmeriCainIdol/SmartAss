@@ -39,11 +39,6 @@ class Home extends Component {
                       </tr>
                     </tbody>
                   </table>
-                    {/* <h4>Create Game</h4>
-                    <NavLink to="/gameCreation">
-                      <button type="submit" className="btn btn-primary">Create Game</button>
-                      <Route path="/gameCreation" component={GameCreation} />
-                    </NavLink> */}
                 </div>
 
                 <div className="col-md-4">
