@@ -27,9 +27,11 @@ class SignUp extends React.Component {
             passwordinput: this.state.passwordinput,
             passwordinput2: this.state.passwordinput2
         }
-        console.log(newUser);
-        axios.post('/sign_up')
+        //const userReadyForPost = JSON.stringify(newUser);
+        //console.log(newUser);
+        axios.post('/sign_up', newUser)
             .then((response) => {
+                //console.log(userReadyForPost)
                 console.log('axios post from form submit on signup:', response);
             }).catch(error => {
                 console.log(error);
