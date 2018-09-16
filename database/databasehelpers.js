@@ -20,28 +20,16 @@ const userSignedUp = (userObject) => {
 
 //NOTE: take the object that userSignedUp created and pass into this function
 //save a new user into the database
+
 const saveUser = (userObject) => {
-  //first check database and see if user exists
-  User.find({ username: userObject.username },
-    (err, docs) => {
-      if (err) {
-        //if not, create the user and save it to database
-        const newUser = new User(userObject);
-        newUser.save(
-          (error) => {
-            if (error) {
-              console.log(`error saving new user: ${error}`)
-            } else {
-              console.log(`new user succesfully saved`)
-            }
-          })
-      } else {
-        //the user exists
-        console.log('DAMN');
-        //window.alert('user already exists');
-        //FIXME: do something else here maybe
-      }
-    });
+  const newUser = new User(userObject);
+  newUser.save(error => {
+    if (error) {
+      console.log(`error saving user into database saveuser function ${error}`)
+    } else {
+      console.log(`successfully saved user into database`)
+    }
+  })
 }
 
 //after the game finishes update the userObject
