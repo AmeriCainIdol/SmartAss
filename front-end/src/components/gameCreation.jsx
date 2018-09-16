@@ -12,6 +12,7 @@ export default class GameCreation extends Component {
       categoryIsOpen: false,
       difficultyIsOpen: false,
       category: '',
+      categoryId: null,
       difficulty: ''
     }
     this.toggleOpenCategory = this.toggleOpenCategory.bind(this);
@@ -30,6 +31,8 @@ export default class GameCreation extends Component {
 
   categoryDropdownClick (e) {
     e.preventDefault();
+    console.log(e.target, 'cat')
+    console.log(e.target.name, 'cat')
     this.setState({
       category: e.target.name
     })
@@ -37,9 +40,10 @@ export default class GameCreation extends Component {
 
   difficultyDropdownClick(e) {
     e.preventDefault();
-    console.log(e.target)
+    console.log(e.target, 'diff')
+    console.log(e.target.name, 'diff')
     this.setState({
-      difficulty: e.target.level
+      difficulty: e.target.name
     })
   }
 
@@ -87,9 +91,9 @@ export default class GameCreation extends Component {
                         {triviaHelpers.triviaHelpers.trivia_categories.map(category => {
                           return (<a  className="dropdown-item" 
                                       href="#" 
-                                      category={category}
                                       name={category.name} 
                                       key={category.id}
+                                      id={category.id}
                                       onClick={e => this.categoryDropdownClick(e)}>{category.name}</a>);
                         })}
                       </div>
@@ -104,11 +108,11 @@ export default class GameCreation extends Component {
                         aria-haspopup="true">Difficulty</button>
                       <div className={difficultyMenuClass} aria-labelledby="dropdownMenuButton">
                         {triviaHelpers.triviaHelpers.difficulty_levels.map(difficulty => {
-                          return (<a className="dropdown-item"
-                            href="#"
-                            level={difficulty.level}
-                            key={difficulty.id}
-                            onClick={e => this.difficultyDropdownClick(e)}>{difficulty.level}</a>);
+                          return (<a  className="dropdown-item"
+                                      href="#"
+                                      name={difficulty.level}
+                                      key={difficulty.id}
+                                      onClick={e => this.difficultyDropdownClick(e)}>{difficulty.level}</a>);
                         })}
                       </div>
                     </div>
