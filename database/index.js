@@ -19,6 +19,7 @@ mongoose.connect(mongoDB, {
   useNewUrlParser: true,
 });
 //deprecation warning fix
+
 mongoose.set('useCreateIndex', true);
 
 
@@ -32,12 +33,15 @@ db.once('open', function () {
 
 const userSchema = mongoose.Schema({
   //this will give us no duplicates
-  user_id: {
-    type: Number,
-    unique: true,
-    index: true
+  // user_id: {
+  //   type: Number,
+  //   unique: true,
+  //   //index: true
+  // },
+  username: {
+    type: String,
+    unique: true
   },
-  username: String,
   userEmail: String,
   userPassword: String,
   wins: Number,
