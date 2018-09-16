@@ -4,8 +4,28 @@ import Timer from './timer.jsx';
 class GamePage extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      active: null
+    }
+    this.toggleSelector = this.toggleSelector.bind(this);
+    this.color = this.color.bind(this);
   }
   
+  toggleSelector(position) {
+    if (this.state.active === position) {
+      this.setState({active: null})
+    } else {
+      this.setState({active: position})
+    }
+  }
+
+  color(position) {
+    if (this.state.active === position) {
+      return 'blue'
+    }
+    return '';
+  }
+
   render () {
     return (
       <div className="container-fluid">
@@ -21,7 +41,7 @@ class GamePage extends React.Component {
               <tbody>
                 <tr className="first-option">
                   <td>A</td>
-                  <td>Eruption of Mount Vesuvius</td>
+                  <td style={{background: this.color(0)}} onClick={() => this.toggleSelector(0)}>Eruption of Mount Vesuvius</td>
                 </tr>
                 <tr className="second-option">
                   <td>B</td>
@@ -40,6 +60,9 @@ class GamePage extends React.Component {
           </div>
           <div className="col-md-4">
             <Timer />
+            <div>
+              <h3>Score: {}</h3>
+            </div>
             {/* <h2>Time Limit:</h2>
             <p>20 seconds</p> */}
           </div>
