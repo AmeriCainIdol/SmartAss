@@ -10,7 +10,7 @@ class Timer extends Component {
     this.countdown = this.countdown.bind(this);
   }
   countdown () {
-    this.setState((prevState, props) => ({
+    this.setState((prevState) => ({
       timeRemaining: prevState.timeRemaining - 1
     }))
     if (this.state.timeRemaining === 0) {
