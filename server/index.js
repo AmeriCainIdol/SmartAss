@@ -44,9 +44,9 @@ app.post('/sign_up',
     //take the info from the fields
     const username = request.body.username;
     const email = request.body.email;
-    const password = request.body.password;
+    const password = request.body.passwordinput;
 
-    console.log('request inside post', request.body)
+    //console.log('request inside post', request.body)
 
     const userObject = {
       username,
@@ -54,8 +54,11 @@ app.post('/sign_up',
       password
     }
 
+    console.log(userObject);
+
     //save them to the database
     const newUserReadyForSaving = dbHelpers.userSignedUp(userObject);
+    console.log(newUserReadyForSaving);
     dbHelpers.saveUser(newUserReadyForSaving);
 
     //redirect user to login page

@@ -27,6 +27,8 @@ class SignUp extends React.Component {
             passwordinput: this.state.passwordinput,
             passwordinput2: this.state.passwordinput2
         }
+        //FIXME: passwords need to match before moving on!
+
         //const userReadyForPost = JSON.stringify(newUser);
         //console.log(newUser);
         axios.post('/sign_up', newUser)
