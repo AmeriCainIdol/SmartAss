@@ -46,6 +46,7 @@ class GameCreation extends Component {
                   <th>Players In Game</th>
                   <th>Category</th>
                   <th>Category Selection</th>
+                  <th>Difficulty</th>
                 </tr>
               </thead>
               <tbody>
