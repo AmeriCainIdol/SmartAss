@@ -4,13 +4,23 @@ import GamePage from './gamePage.jsx';
 import request from 'request';
 import triviaHelpers from '../../../server/trivia_api_helpers.js';
 
+
 class GameCreation extends Component {
   constructor(props) {
     super(props);
-    console.log(triviaHelpers)
+    this.state = {
+      isOpen: false
+    }
+    this.toggleOpen = this.toggleOpen.bind(this);
+    // console.log(props)
+  }
+
+  toggleOpen () {
+    this.setState({ isOpen: !this.state.isOpen })
   }    
   
   render () {
+    const menuClass = `dropdown-menu${this.state.isOpen ? " show" : ""}`
     return (
       <div className="container-fluid">
         <div className="row">
@@ -21,10 +31,15 @@ class GameCreation extends Component {
             </ul>
           </div>
           <div className="col-md-4">
-            <div className="dropdown">
-              <button className="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">Category</button>
-              <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a className="dropdown-item disabled" href="#">Category</a> <a className="dropdown-item" href="#">History</a> <a className="dropdown-item" href="#">Geography</a>
+            <div className="dropdown" onClick={this.toggleOpen}>
+              <button className="btn btn-primary dropdown-toggle" 
+                      type="button" 
+                      id="dropdownMenuButton" 
+                      data-toggle="dropdown" 
+                      aria-haspopup="true">Category</button>
+              <div className={menuClass} aria-labelledby="dropdownMenuButton">
+                <a className="dropdown-item" href="#nogo">History</a>
+                <a className="dropdown-item" href="#nogo">Geography</a>
               </div>
             </div>
           </div>
