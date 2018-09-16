@@ -46,6 +46,8 @@ app.post('/sign_up',
     const email = request.body.email;
     const password = request.body.password;
 
+    console.log('request inside post', request.body)
+
     const userObject = {
       username,
       email,
@@ -69,6 +71,7 @@ app.post('/gameover',
     //send the whole userObject to dbHelpers.updateUserAfterGame
     dbHelpers.updateUserAfterGame(userObjectThatWonTheGame);
     response.status(201, 'OK');
+    console.log(response.body);
     response.end();
   });
 

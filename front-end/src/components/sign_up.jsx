@@ -10,30 +10,28 @@ class SignUp extends React.Component {
             passwordinput: '',
             passwordinput2: '',
         }
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
 
     handleChange(event) {
+        console.log({ [event.target.name]: event.target.value });
         this.setState({ [event.target.name]: event.target.value });
     }
 
     handleSubmit(event) {
         event.preventDefault();
         const newUser = {
-            // username: this.state.username,
-            // email: this.state.email,
-            // passwordinput: this.state.passwordinput,
-            // passwordInput2: this.state.passwordinput2,
-            [event.target.name]: event.target.value
+            username: this.state.username,
+            email: this.state.email,
+            passwordinput: this.state.passwordinput,
+            passwordinput2: this.state.passwordinput2
         }
-
-        axios.post('/sign_up', {
-            params: { newUser }
-        })
+        console.log(newUser);
+        axios.post('/sign_up')
             .then((response) => {
-                console.log(response);
+                console.log('axios post from form submit on signup:', response);
             }).catch(error => {
-                console.log('fuck')
                 console.log(error);
             })
     }
