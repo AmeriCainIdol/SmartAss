@@ -9,15 +9,29 @@ class GameCreation extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false
+      isOpen: false,
+      category: ''
     }
     this.toggleOpen = this.toggleOpen.bind(this);
-    console.log(triviaHelpers)
+    this.dropDownClick = this.dropDownClick.bind(this);
   }
 
   toggleOpen () {
     this.setState({ isOpen: !this.state.isOpen })
-  }    
+  }
+
+  dropDownClick (e) {
+    e.preventDefault();
+    console.log(e)
+    this.setState({
+      category: e.currentTarget
+    })
+    console.log(this.state);
+  }
+
+  componentDidUpdate() {
+    
+  }
   
   render () {
     const menuClass = `dropdown-menu${this.state.isOpen ? " show" : ""}`
@@ -40,7 +54,7 @@ class GameCreation extends Component {
                     Player 1
                   </td>
                   <td>
-                    History
+                    {this.state.category}
                   </td>
                   <td>
                     <div className="dropdown" onClick={this.toggleOpen}>
@@ -51,7 +65,12 @@ class GameCreation extends Component {
                         aria-haspopup="true">Category</button>
                       <div className={menuClass} aria-labelledby="dropdownMenuButton">
                         {triviaHelpers.triviaHelpers.trivia_categories.map(category => {
-                          return (<a className="dropdown-item" href="#" category={category.name} key={category.id}>{category.name}</a>);
+                          return (<a  className="dropdown-item" 
+                                      href="#" 
+                                      category={category}
+                                      name={category.name} 
+                                      key={category.id}
+                                      onClick={this.dropDownClick}>{category.name}</a>);
                         })}
                       </div>
                     </div>
