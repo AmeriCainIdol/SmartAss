@@ -5,25 +5,29 @@ class GamePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: null
+      answer: null,
+      score: 0
     }
     this.toggleSelector = this.toggleSelector.bind(this);
-    this.color = this.color.bind(this);
+    this.selectedColor = this.selectedColor.bind(this);
+    this.updateScore = this.updateScore.bind(this);
   }
   
   toggleSelector(position) {
-    if (this.state.active === position) {
-      this.setState({active: null})
-    } else {
-      this.setState({active: position})
-    }
+      this.setState({answer: position}, () => {
+        console.log(this.state) 
+      })
   }
 
-  color(position) {
-    if (this.state.active === position) {
+  selectedColor(position) {
+    if (this.state.answer === position) {
       return '#87FDFD'
     }
     return '';
+  }
+
+  updateScore() {
+    // if (this.state)
   }
 
   render () {
@@ -40,20 +44,20 @@ class GamePage extends React.Component {
             <table className="table">
               <tbody>
                 <tr className="first-option">
-                  <td style={{ background: this.color(0) }} onClick={() => this.toggleSelector(0)}>A</td>
-                  <td style={{background: this.color(0)}} onClick={() => this.toggleSelector(0)}>Eruption of Mount Vesuvius</td>
+                  <td style={{ background: this.selectedColor('A') }} onClick={() => this.toggleSelector('A')}>A</td>
+                  <td style={{ background: this.selectedColor('A') }} onClick={() => this.toggleSelector('A')}>Eruption of Mount Vesuvius</td>
                 </tr>
                 <tr className="second-option">
-                  <td style={{ background: this.color(1) }} onClick={() => this.toggleSelector(1)}>B</td>
-                  <td style={{ background: this.color(1) }} onClick={() => this.toggleSelector(1)}>The siege of Troy</td>
+                  <td style={{ background: this.selectedColor('B') }} onClick={() => this.toggleSelector('B')}>B</td>
+                  <td style={{ background: this.selectedColor('B') }} onClick={() => this.toggleSelector('B')}>The siege of Troy</td>
                 </tr>
                 <tr className="third-option">
-                  <td style={{ background: this.color(2) }} onClick={() => this.toggleSelector(2)}>C</td>
-                  <td style={{ background: this.color(2) }} onClick={() => this.toggleSelector(2)}>The minoan eruption of Santorini</td>
+                  <td style={{ background: this.selectedColor('C') }} onClick={() => this.toggleSelector('C')}>C</td>
+                  <td style={{ background: this.selectedColor('C') }} onClick={() => this.toggleSelector('C')}>The minoan eruption of Santorini</td>
                 </tr>
                 <tr className="fourth-option">
-                  <td style={{ background: this.color(3) }} onClick={() => this.toggleSelector(3)}>D</td>
-                  <td style={{ background: this.color(3) }} onClick={() => this.toggleSelector(3)}>The asteroid that killed the dinosaurs</td>
+                  <td style={{ background: this.selectedColor('D') }} onClick={() => this.toggleSelector('D')}>D</td>
+                  <td style={{ background: this.selectedColor('D') }} onClick={() => this.toggleSelector('D')}>The asteroid that killed the dinosaurs</td>
                 </tr>
               </tbody>
             </table>
@@ -61,10 +65,8 @@ class GamePage extends React.Component {
           <div className="col-md-4">
             <Timer />
             <div>
-              <h3>Score: {}</h3>
+              <h3>Score: {this.state.score}</h3>
             </div>
-            {/* <h2>Time Limit:</h2>
-            <p>20 seconds</p> */}
           </div>
         </div>
       </div>

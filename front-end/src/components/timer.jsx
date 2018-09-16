@@ -16,14 +16,6 @@ class Timer extends Component {
     if (this.state.timeRemaining === 0) {
       clearInterval(this.interval);
     }
-    // this.setState({
-    //   time: this.state.time,
-    //   start: Date.now()
-    // })
-    // this.timer = setInterval(() => this.setState({
-    //   time: this.state.time - 1
-    // }), 1000)
-    // console.log('start')
   }
 
   componentDidMount() {
@@ -38,7 +30,6 @@ class Timer extends Component {
     return (
       <div>
         <h3>Time Remaining: {this.state.timeRemaining}</h3>
-        {/* <button onClick={this.countdown}>Start</button> */}
       </div>
     )
   }
