@@ -12,7 +12,7 @@ class GameCreation extends Component {
       isOpen: false
     }
     this.toggleOpen = this.toggleOpen.bind(this);
-    // console.log(props)
+    console.log(triviaHelpers)
   }
 
   toggleOpen () {
@@ -38,8 +38,10 @@ class GameCreation extends Component {
                       data-toggle="dropdown" 
                       aria-haspopup="true">Category</button>
               <div className={menuClass} aria-labelledby="dropdownMenuButton">
-                <a className="dropdown-item" href="#nogo">History</a>
-                <a className="dropdown-item" href="#nogo">Geography</a>
+                {triviaHelpers.triviaHelpers.trivia_categories.map(category => {
+                  console.log(category)
+                  return (<a className="dropdown-item" href="#" category={category.name} key={category.id}>{category.name}</a>);
+                })}
               </div>
             </div>
           </div>
