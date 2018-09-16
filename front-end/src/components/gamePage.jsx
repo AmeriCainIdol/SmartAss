@@ -1,4 +1,5 @@
 import React from 'react';
+import Timer from './timer.jsx';
 
 class GamePage extends React.Component {
   constructor(props) {
@@ -38,8 +39,9 @@ class GamePage extends React.Component {
             </table>
           </div>
           <div className="col-md-4">
-            <h2>Time Limit:</h2>
-            <p>20 seconds</p>
+            <Timer />
+            {/* <h2>Time Limit:</h2>
+            <p>20 seconds</p> */}
           </div>
         </div>
       </div>

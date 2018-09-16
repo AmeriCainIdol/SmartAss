@@ -20,13 +20,13 @@ class GameCreation extends Component {
     this.setState({ isOpen: !this.state.isOpen })
   }
 
-  dropDownClick (e) {
-    e.preventDefault();
-    console.log(e)
-    this.setState({
-      category: e.currentTarget
-    })
-    console.log(this.state);
+  dropDownClick () {
+    // e.preventDefault();
+    // console.log(e.typse)
+    // this.setState({
+    //   category: e.type
+    // })
+    // console.log(this);
   }
 
   componentDidUpdate() {
@@ -70,7 +70,7 @@ class GameCreation extends Component {
                                       category={category}
                                       name={category.name} 
                                       key={category.id}
-                                      onClick={this.dropDownClick}>{category.name}</a>);
+                                      onClick={e => this.dropDownClick(category.id, category.name, e)}>{category.name}</a>);
                         })}
                       </div>
                     </div>
