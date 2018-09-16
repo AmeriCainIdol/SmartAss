@@ -32,7 +32,11 @@ const trivia_categories = [
   { "id": 32, "name": "Entertainment: Cartoon & Animations" }
 ]
 
-const difficulty_levels = ['easy', 'medium', 'hard'];
+const difficulty_levels = [
+  {id: 1, level: 'easy'}, 
+  {id: 2, level: 'medium'}, 
+  {id: 3, level: 'hard'}
+];
 //counts each question in a category
 const countQuestionsPerCategory = (categoryId, callback) => {
   let options = {
