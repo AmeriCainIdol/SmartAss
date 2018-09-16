@@ -11,28 +11,13 @@ class GamePage extends React.Component {
     this.toggleSelector = this.toggleSelector.bind(this);
     this.selectedColor = this.selectedColor.bind(this);
     this.updateScore = this.updateScore.bind(this);
-    // this.toggleAnswerSelector = this.toggleAnswerSelector.bind(this);
   }
   
   toggleSelector(position) {
-    // if (this.state.answer === null) {
-    //   this.setState({answer: null, answer: null})
-    // }
       this.setState({answer: position}, () => {
-
         console.log(this.state) 
       })
   }
-
-  // toggleAnswerSelector(position) {
-  //   if (this.state.answer === position) {
-  //     this.setState({ answer: null })
-  //   } else {
-  //     this.setState({ answer: position })
-  //     console.log(this.state)
-  //   }
-    
-  // }
 
   selectedColor(position) {
     if (this.state.answer === position) {
@@ -40,10 +25,6 @@ class GamePage extends React.Component {
     }
     return '';
   }
-
-  // selectedAnswer(position) {
-  //   if (this.state.answer )
-  // }
 
   updateScore() {
     // if (this.state)
