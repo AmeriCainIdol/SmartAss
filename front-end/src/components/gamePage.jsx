@@ -21,7 +21,7 @@ class GamePage extends React.Component {
 
   color(position) {
     if (this.state.active === position) {
-      return 'blue'
+      return '#87FDFD'
     }
     return '';
   }
