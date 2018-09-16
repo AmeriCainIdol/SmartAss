@@ -29,6 +29,9 @@ class App extends Component {
         <div>
           <Navigation />
           <Switch >
+            {/* <Link to="/sign_up">
+              <button>Sign UP</button>
+            </Link> */}
             <Route exact={true} path="/" component={Home} />
             <Route path="/sign_up" component={SignUp} />
             <Route path="/gameCreation" component={GameCreation} />

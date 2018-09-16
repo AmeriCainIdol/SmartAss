@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Timer from './timer.jsx';
 
-class GamePage extends Component {
+export default class GamePage extends Component {
   constructor(props) {
     super(props);
     console.log(props);
@@ -94,5 +94,3 @@ class GamePage extends Component {
     )
   }
 }
-
-export default GamePage;

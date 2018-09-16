@@ -5,7 +5,7 @@ import request from 'request';
 import triviaHelpers from '../../../server/trivia_api_helpers.js';
 
 
-class GameCreation extends Component {
+export default class GameCreation extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,8 +15,9 @@ class GameCreation extends Component {
       difficulty: ''
     }
     this.toggleOpenCategory = this.toggleOpenCategory.bind(this);
-    this.dropDownClick = this.dropDownClick.bind(this);
     this.toggleOpenDifficulty = this.toggleOpenDifficulty.bind(this);
+    this.categoryDropdownClick = this.categoryDropdownClick.bind(this);
+    this.difficultyDropdownClick = this.difficultyDropdownClick.bind(this);
   }
 
   toggleOpenCategory () {
@@ -27,13 +28,19 @@ class GameCreation extends Component {
     this.setState({ difficultyIsOpen: !this.state.difficultyIsOpen })
   }
 
-  dropDownClick () {
-    // e.preventDefault();
-    // console.log(e.typse)
-    // this.setState({
-    //   category: e.type
-    // })
-    // console.log(this);
+  categoryDropdownClick (e) {
+    e.preventDefault();
+    this.setState({
+      category: e.target.name
+    })
+  }
+
+  difficultyDropdownClick(e) {
+    e.preventDefault();
+    console.log(e.target)
+    this.setState({
+      difficulty: e.target.level
+    })
   }
 
   componentDidUpdate() {
@@ -83,7 +90,7 @@ class GameCreation extends Component {
                                       category={category}
                                       name={category.name} 
                                       key={category.id}
-                                      onClick={e => this.dropDownClick(category.id, category.name, e)}>{category.name}</a>);
+                                      onClick={e => this.categoryDropdownClick(e)}>{category.name}</a>);
                         })}
                       </div>
                     </div>
@@ -94,14 +101,14 @@ class GameCreation extends Component {
                         type="button"
                         id="dropdownMenuButton"
                         data-toggle="dropdown"
-                        aria-haspopup="true">Category</button>
+                        aria-haspopup="true">Difficulty</button>
                       <div className={difficultyMenuClass} aria-labelledby="dropdownMenuButton">
                         {triviaHelpers.triviaHelpers.difficulty_levels.map(difficulty => {
                           return (<a className="dropdown-item"
                             href="#"
                             level={difficulty.level}
                             key={difficulty.id}
-                            onClick={e => this.dropDownClick(difficulty.id, difficulty.level, e)}>{difficulty.level}</a>);
+                            onClick={e => this.difficultyDropdownClick(e)}>{difficulty.level}</a>);
                         })}
                       </div>
                     </div>
@@ -113,7 +120,7 @@ class GameCreation extends Component {
           <div className="col-md-4">
             <BrowserRouter>
               <div>
-                <Link to="/gamePage">
+                <Link to="/gamePage" >
                   <button type="button" className="btn btn-success">Create Game</button>
                 </Link>
               </div>
@@ -124,4 +131,3 @@ class GameCreation extends Component {
     )
   }
 }
-export default GameCreation;
