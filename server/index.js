@@ -54,7 +54,7 @@ app.post('/sign_up',
       password
     }
 
-    console.log(userObject);
+    //console.log(userObject);
 
     //save them to the database
     const newUserReadyForSaving = dbHelpers.userSignedUp(userObject);
