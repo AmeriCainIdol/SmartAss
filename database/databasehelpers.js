@@ -32,30 +32,6 @@ const saveUser = (userObject) => {
   })
 }
 
-// const saveUser = (userObject) => {
-//   //first check database and see if user exists
-//   User.find({ username: userObject.username },
-//     (err, docs) => {
-//       if (err) {
-//         //if not, create the user and save it to database
-//         const newUser = new User(userObject);
-//         newUser.save(
-//           (error) => {
-//             if (error) {
-//               console.log(`error saving new user: ${error}`)
-//             } else {
-//               console.log(`new user succesfully saved`)
-//             }
-//           })
-//       } else {
-//         //the user exists
-//         //console.log('newUser');
-//         //window.alert('user already exists');
-//         //FIXME: do something else here maybe
-//       }
-//     });
-// }
-
 //after the game finishes update the userObject
 const updateUserAfterGame = (userObject) => {
   //find user and update
