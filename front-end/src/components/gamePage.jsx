@@ -5,29 +5,33 @@ class GamePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      answer: null,
-      score: 0
+      selectedAnswer: null,
+      score: 0,
+      correctAnswer: 'C'
     }
     this.toggleSelector = this.toggleSelector.bind(this);
     this.selectedColor = this.selectedColor.bind(this);
-    this.updateScore = this.updateScore.bind(this);
   }
   
   toggleSelector(position) {
-      this.setState({answer: position}, () => {
+      this.setState({selectedAnswer: position}, () => {
         console.log(this.state) 
       })
   }
 
   selectedColor(position) {
-    if (this.state.answer === position) {
+    if (this.state.selectedAnswer === position) {
       return '#87FDFD'
     }
     return '';
   }
 
-  updateScore() {
-    // if (this.state)
+  componentDidMount () {
+    setInterval(() => {
+      if (this.state.selectedAnswer === this.state.correctAnswer) {
+        this.setState({ score: this.state.score + 1 });
+      }    
+    }, 1000)
   }
 
   render () {

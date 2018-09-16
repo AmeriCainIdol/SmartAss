@@ -24,16 +24,16 @@ class Home extends Component {
                   <table className="table">
                     <thead>
                       <tr>
-                        <th>Rank</th>
                         <th>Username</th>
+                        <th>Rank</th>
                         <th>Wins</th>
                         <th>Losses</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>1</td>
                         <td>Jstrzesz</td>
+                        <td>1</td>
                         <td>4</td>
                         <td>0</td>
                       </tr>
