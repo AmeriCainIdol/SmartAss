@@ -5,9 +5,8 @@ class GamePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: null,
-      score: 0,
-      answer: null
+      answer: null,
+      score: 0
     }
     this.toggleSelector = this.toggleSelector.bind(this);
     this.selectedColor = this.selectedColor.bind(this);
@@ -16,12 +15,13 @@ class GamePage extends React.Component {
   }
   
   toggleSelector(position) {
-    if (this.state.active === position) {
-      this.setState({active: null})
-    } else {
-      this.setState({active: position})
-      console.log(this.state)
-    }
+    // if (this.state.answer === null) {
+    //   this.setState({answer: null, answer: null})
+    // }
+      this.setState({answer: position}, () => {
+
+        console.log(this.state) 
+      })
   }
 
   // toggleAnswerSelector(position) {
@@ -35,7 +35,7 @@ class GamePage extends React.Component {
   // }
 
   selectedColor(position) {
-    if (this.state.active === position) {
+    if (this.state.answer === position) {
       return '#87FDFD'
     }
     return '';
@@ -63,10 +63,8 @@ class GamePage extends React.Component {
             <table className="table">
               <tbody>
                 <tr className="first-option">
-                  <td style={{ background: this.selectedColor('A') }} onClick={() => {
-                    this.toggleSelector('A'); 
-                    }}>A</td>
-                  <td style={{ background: this.selectedColor('A') }} onClick={() => {this.toggleSelector('A');}}>Eruption of Mount Vesuvius</td>
+                  <td style={{ background: this.selectedColor('A') }} onClick={() => this.toggleSelector('A')}>A</td>
+                  <td style={{ background: this.selectedColor('A') }} onClick={() => this.toggleSelector('A')}>Eruption of Mount Vesuvius</td>
                 </tr>
                 <tr className="second-option">
                   <td style={{ background: this.selectedColor('B') }} onClick={() => this.toggleSelector('B')}>B</td>
