@@ -9,39 +9,75 @@ class GameCreation extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false
+      isOpen: false,
+      category: ''
     }
     this.toggleOpen = this.toggleOpen.bind(this);
-    // console.log(props)
+    this.dropDownClick = this.dropDownClick.bind(this);
   }
 
   toggleOpen () {
     this.setState({ isOpen: !this.state.isOpen })
-  }    
+  }
+
+  dropDownClick () {
+    // e.preventDefault();
+    // console.log(e.typse)
+    // this.setState({
+    //   category: e.type
+    // })
+    // console.log(this);
+  }
+
+  componentDidUpdate() {
+    
+  }
   
   render () {
     const menuClass = `dropdown-menu${this.state.isOpen ? " show" : ""}`
     return (
       <div className="container-fluid">
+        <h1>Create Game</h1>
         <div className="row">
-          <div className="col-md-4">
-            <h1>Players in Game</h1>
-            <ul>
-              <li className="list-item">Player 1</li>
-            </ul>
-          </div>
-          <div className="col-md-4">
-            <div className="dropdown" onClick={this.toggleOpen}>
-              <button className="btn btn-primary dropdown-toggle" 
-                      type="button" 
-                      id="dropdownMenuButton" 
-                      data-toggle="dropdown" 
-                      aria-haspopup="true">Category</button>
-              <div className={menuClass} aria-labelledby="dropdownMenuButton">
-                <a className="dropdown-item" href="#nogo">History</a>
-                <a className="dropdown-item" href="#nogo">Geography</a>
-              </div>
-            </div>
+          <div className="col-md-8">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>Players In Game</th>
+                  <th>Category</th>
+                  <th>Category Selection</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    Player 1
+                  </td>
+                  <td>
+                    {this.state.category}
+                  </td>
+                  <td>
+                    <div className="dropdown" onClick={this.toggleOpen}>
+                      <button className="btn btn-primary dropdown-toggle"
+                        type="button"
+                        id="dropdownMenuButton"
+                        data-toggle="dropdown"
+                        aria-haspopup="true">Category</button>
+                      <div className={menuClass} aria-labelledby="dropdownMenuButton">
+                        {triviaHelpers.triviaHelpers.trivia_categories.map(category => {
+                          return (<a  className="dropdown-item" 
+                                      href="#" 
+                                      category={category}
+                                      name={category.name} 
+                                      key={category.id}
+                                      onClick={e => this.dropDownClick(category.id, category.name, e)}>{category.name}</a>);
+                        })}
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
           <div className="col-md-4">
             <BrowserRouter>
