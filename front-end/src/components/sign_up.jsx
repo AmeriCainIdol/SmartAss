@@ -15,7 +15,7 @@ class SignUp extends React.Component {
     }
 
     handleChange(event) {
-        console.log({ [event.target.name]: event.target.value });
+        //console.log({ [event.target.name]: event.target.value });
         this.setState({ [event.target.name]: event.target.value });
     }
 
@@ -29,11 +29,8 @@ class SignUp extends React.Component {
         }
         //FIXME: passwords need to match before moving on!
 
-        //const userReadyForPost = JSON.stringify(newUser);
-        //console.log(newUser);
         axios.post('/sign_up', newUser)
             .then((response) => {
-                //console.log(userReadyForPost)
                 console.log('axios post from form submit on signup:', response);
             }).catch(error => {
                 console.log(error);
@@ -66,14 +63,14 @@ class SignUp extends React.Component {
                                 <label id="passwordInput">
                                     Password
 					                      </label>
-                                <input type="password" name="passwordinput" className="form-control" id="passwordInputSign-In" onChange={this.handleChange} />
+                                <input type="password" name="passwordinput" className="form-control" id="passwordInputSign-In" onChange={this.handleChange} value={this.state.passwordinput} />
                             </div>
 
                             <div className="form-group">
                                 <label id="passwordInput2">
                                     Re-Enter Password to confirm
 					                      </label>
-                                <input type="password" name="passwordinput2" className="form-control" id="passwordInputSign-InConfirm" onChange={this.handleChange} />
+                                <input type="password" name="passwordinput2" className="form-control" id="passwordInputSign-InConfirm" onChange={this.handleChange} value={this.state.passwordinput2} />
                             </div>
 
                             <button type="submit" className="btn btn-primary">

@@ -32,12 +32,6 @@ db.once('open', function () {
 });
 
 const userSchema = mongoose.Schema({
-  //this will give us no duplicates
-  // user_id: {
-  //   type: Number,
-  //   unique: true,
-  //   //index: true
-  // },
   username: {
     type: String,
     unique: true
