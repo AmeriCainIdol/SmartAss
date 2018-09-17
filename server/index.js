@@ -6,6 +6,7 @@ const triviaHelpers = require('./trivia_api_helpers');
 //require cors
 const cors = require('cors');
 
+
 //morgan will intercept http requests and log them in terminal
 const morgan = require('morgan');
 //body parser
@@ -74,6 +75,7 @@ app.post('/gameCreation', (req, res) => {
     } else {
       const parsedBody = JSON.parse(body);
       console.log(parsedBody, '007')
+
 
     }
   })
