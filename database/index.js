@@ -8,8 +8,9 @@ var db = mongoose.connection;
 //   mongoose.connection.db.dropDatabase();
 // })
 
+
 //FIXME: remember to add a process.env here for mlabs deploy
-const mongoDB = process.env.MLAB;
+const mongoDB = `mongodb://user:tron22@ds153552.mlab.com:53552/smartass`;
 //process.env.MONGODB_URI;
 //mongoose.Promise = global.Promise;
 mongoose.connect(mongoDB, {
@@ -45,12 +46,16 @@ const userSchema = mongoose.Schema({
 });
 
 const questionsSchema = mongoose.Schema({
+<<<<<<< HEAD
+
+=======
   category: String,
   type: String,
   difficulty: String,
   question: String,
   correct_answer: String,
   incorrect_answers: Array
+>>>>>>> 46846f830dc661a1b62821148fd7cbf327940dd5
 })
 
 const Questions = mongoose.model('Questions', questionsSchema);
