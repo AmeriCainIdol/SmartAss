@@ -4,7 +4,7 @@ const dbHelpers = require('../database/databasehelpers');
 //api helpers object
 const triviaHelpers = require('./trivia_api_helpers');
 //access questions database
-const questionsDB = require('../database/questions');
+const questionsDB = require('../database/index');
 //require cors
 const cors = require('cors');
 

@@ -44,6 +44,25 @@ const userSchema = mongoose.Schema({
   averageWinRate: Number,
 });
 
+const questionsSchema = mongoose.Schema({
+  category: String,
+  type: String,
+  difficulty: String,
+  question: String,
+  correct_answer: String,
+  incorrect_answers: Array
+})
+
+const Questions = mongoose.model('Questions', questionsSchema);
+
+const save = data => {
+  const newQuestions = new Questions(data);
+  newQuestions.save(err => {
+    if (err) console.error(err);
+  })
+}
 const User = mongoose.model('User', userSchema);
 
+module.exports.save = save;
 module.exports.User = User;
+module.exports.Questions = Questions;
