@@ -3,6 +3,8 @@ const express = require('express');
 const dbHelpers = require('../database/databasehelpers');
 //api helpers object
 const triviaHelpers = require('./trivia_api_helpers');
+//access questions database
+const questionsDB = require('../database/index');
 //require cors
 const cors = require('cors');
 
@@ -74,15 +76,40 @@ app.post('/gameCreation', (req, res) => {
       console.error(err);
     } else {
       const parsedBody = JSON.parse(body);
-      console.log(parsedBody, '007')
-
-
+      parsedBody.results.forEach(question => {
+        questionsDB.save({
+          category: question.category,
+          type: question.type,
+          difficulty: question.difficulty,
+          question: question.question,
+          correct_answer: question.correct_answer,
+          incorrect_answers: question.incorrect_answers
+        })
+      })
     }
   })
-  res.send(201);
+  res.sendStatus(201);
+  res.end();
 })
 
-
+//get request to database to retrieve questions
+app.get('/gameCreation', (req, res) => {
+  questionsDB.find((err, data) => {
+    if (err) {
+      console.error(err);
+    } else {
+      const displayedQuestions = data.map(question => {
+        console.log(question);
+        return { category: question.category,
+                difficulty: question.difficulty,
+                question: question.question,
+                correct_answer: question.correct_answer,
+                incorrect_answers: question.incorrect_answers};
+      })
+      res.send(displayedQuestions);
+    }
+  })
+})
 //handler for changing the user stats that won the game
 app.post('/gameover',
   (request, response) => {
