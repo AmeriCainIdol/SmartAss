@@ -19,6 +19,7 @@ export default class GameCreation extends Component {
     this.toggleOpenDifficulty = this.toggleOpenDifficulty.bind(this);
     this.categoryDropdownClick = this.categoryDropdownClick.bind(this);
     this.difficultyDropdownClick = this.difficultyDropdownClick.bind(this);
+    this.redirectToGamePage = this.redirectToGamePage.bind(this);
   }
 
   toggleOpenCategory () {
@@ -47,8 +48,8 @@ export default class GameCreation extends Component {
     })
   }
 
-  componentDidUpdate() {
-    
+  redirectToGamePage() {
+    this.props.history.push('/gamePage')
   }
   
   render () {
@@ -125,7 +126,7 @@ export default class GameCreation extends Component {
             <BrowserRouter>
               <div>
                 <Link to="/gamePage" >
-                  <button type="button" className="btn btn-success">Create Game</button>
+                  <button type="button" className="btn btn-success" onClick={this.redirectToGamePage}>Create Game</button>
                 </Link>
               </div>
             </BrowserRouter>

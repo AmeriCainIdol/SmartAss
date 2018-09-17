@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link, Redirect } from 'react-router-dom';
 import Home from './components/home.jsx';
 import SignUp from './components/sign_up.jsx';
 import GameOver from './components/gameOver.jsx';
@@ -13,11 +13,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      triviaHelpers: triviaHelpers,
-      timeRemaining: 20
+      triviaHelpers: triviaHelpers
     }
   }
-
 
   signUp() {
 
@@ -29,10 +27,10 @@ class App extends Component {
         <div>
           <Navigation />
           <Switch >
-            <Route exact={true} path="/" component={Home} />
-            <Route path="/sign_up" component={SignUp} />
-            <Route path="/gameCreation" component={GameCreation} />
-            <Route path="/gamePage" component={GamePage} />
+            <Route exact={true} path="/" render={props => <Home {...props} />}/>
+            <Route path="/sign_up" render={props => <SignUp {...props} />}/>
+            <Route path="/gameCreation" render={props => <GameCreation {...props} />}/>
+            <Route path="/gamePage" render={props => <GamePage {...props} />}/>
           </Switch>
         </div>
       </BrowserRouter>
