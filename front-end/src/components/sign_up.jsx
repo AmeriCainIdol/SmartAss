@@ -12,6 +12,7 @@ export default class SignUp extends React.Component {
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.redirectToHomePage = this.redirectToHomePage.bind(this);
     }
 
     handleChange(event) {
@@ -38,6 +39,10 @@ export default class SignUp extends React.Component {
             }).catch(error => {
                 console.log(error);
             })
+    }
+
+    redirectToHomePage() {
+        this.props.history.push('/')
     }
 
     render() {
@@ -70,17 +75,19 @@ export default class SignUp extends React.Component {
                             </div>
 
                             <div className="form-group">
-                                <label id="passwordInput2">
-                                    Re-Enter Password to confirm
-					                      </label>
-                                <input type="password" name="passwordinput2" className="form-control" id="passwordInputSign-InConfirm" onChange={this.handleChange} />
+                                <label id="passwordInput2">Re-Enter Password to confirm</label>
+                                <input  type="password" 
+                                        name="passwordinput2" 
+                                        className="form-control" 
+                                        id="passwordInputSign-InConfirm" 
+                                        onChange={this.handleChange} />
                             </div>
 
-                            <button type="submit" className="btn btn-primary">
-                                Submit
-				                    </button>
-
+                            <button type="submit" className="btn btn-primary">Submit</button>
                         </form>
+                            <button type="submit" 
+                                    className="btn btn-primary" 
+                                    onClick={this.redirectToHomePage}>Return to Home Page</button>
                     </div>
                 </div>
             </div>
