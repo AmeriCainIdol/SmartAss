@@ -33,14 +33,14 @@ app.use(bodyParser.json())
 let port = process.env.PORT || 3060;
 
 //NOTE: UNCOMMENT FOR DEVELOPMENT
-// app.listen(port, function () {
-//   console.log(`listening on port ${port}`)
-// })
+app.listen(port, function () {
+  console.log(`listening on port ${port}`)
+})
 
 
 //NOTE: COMMENT THIS OUT FOR DEVELOPMENT
 //THIS IS FOR DEPLOY
-app.listen(port, `142.93.13.248`)
+// app.listen(port, `142.93.13.248`)
 
 //getting cors to work
 app.use(function (req, res, next) {
