@@ -1,29 +1,53 @@
-import React from 'react';
-import Timer from './timer.jsx';
+import React, { Component } from 'react';
 
-class GamePage extends React.Component {
+export default class GamePage extends Component {
   constructor(props) {
     super(props);
+    console.log(props);
     this.state = {
-      active: null
+      selectedAnswer: null,
+      score: 0,
+      correctAnswer: 'C',
+      timeRemaining: 20
     }
     this.toggleSelector = this.toggleSelector.bind(this);
-    this.color = this.color.bind(this);
+    this.selectedColor = this.selectedColor.bind(this);
+    this.countdown = this.countdown.bind(this);
   }
   
   toggleSelector(position) {
-    if (this.state.active === position) {
-      this.setState({active: null})
-    } else {
-      this.setState({active: position})
-    }
+      this.setState({selectedAnswer: position}, () => {
+        // console.log(Timer.propTypes) 
+      })
   }
 
-  color(position) {
-    if (this.state.active === position) {
+  selectedColor(position) {
+    if (this.state.selectedAnswer === position) {
       return '#87FDFD'
     }
     return '';
+  }
+
+  countdown() {
+    this.setState((prevState) => ({
+      timeRemaining: prevState.timeRemaining - 1
+    }))
+    if (this.state.timeRemaining === 0) {
+      clearInterval(this.interval);
+    }
+  }
+  
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+  
+  componentDidMount () {
+    this.interval = setInterval(() => this.countdown(), 1000)
+    setInterval(() => {
+      if (this.state.selectedAnswer === this.state.correctAnswer) {
+        this.setState({ score: this.state.score + 1 });
+      }    
+    }, 1000)
   }
 
   render () {
@@ -40,36 +64,32 @@ class GamePage extends React.Component {
             <table className="table">
               <tbody>
                 <tr className="first-option">
-                  <td style={{ background: this.color(0) }} onClick={() => this.toggleSelector(0)}>A</td>
-                  <td style={{background: this.color(0)}} onClick={() => this.toggleSelector(0)}>Eruption of Mount Vesuvius</td>
+                  <td style={{ background: this.selectedColor('A') }} onClick={() => this.toggleSelector('A')}>A</td>
+                  <td style={{ background: this.selectedColor('A') }} onClick={() => this.toggleSelector('A')}>Eruption of Mount Vesuvius</td>
                 </tr>
                 <tr className="second-option">
-                  <td style={{ background: this.color(1) }} onClick={() => this.toggleSelector(1)}>B</td>
-                  <td style={{ background: this.color(1) }} onClick={() => this.toggleSelector(1)}>The siege of Troy</td>
+                  <td style={{ background: this.selectedColor('B') }} onClick={() => this.toggleSelector('B')}>B</td>
+                  <td style={{ background: this.selectedColor('B') }} onClick={() => this.toggleSelector('B')}>The siege of Troy</td>
                 </tr>
                 <tr className="third-option">
-                  <td style={{ background: this.color(2) }} onClick={() => this.toggleSelector(2)}>C</td>
-                  <td style={{ background: this.color(2) }} onClick={() => this.toggleSelector(2)}>The minoan eruption of Santorini</td>
+                  <td style={{ background: this.selectedColor('C') }} onClick={() => this.toggleSelector('C')}>C</td>
+                  <td style={{ background: this.selectedColor('C') }} onClick={() => this.toggleSelector('C')}>The minoan eruption of Santorini</td>
                 </tr>
                 <tr className="fourth-option">
-                  <td style={{ background: this.color(3) }} onClick={() => this.toggleSelector(3)}>D</td>
-                  <td style={{ background: this.color(3) }} onClick={() => this.toggleSelector(3)}>The asteroid that killed the dinosaurs</td>
+                  <td style={{ background: this.selectedColor('D') }} onClick={() => this.toggleSelector('D')}>D</td>
+                  <td style={{ background: this.selectedColor('D') }} onClick={() => this.toggleSelector('D')}>The asteroid that killed the dinosaurs</td>
                 </tr>
               </tbody>
             </table>
           </div>
           <div className="col-md-4">
-            <Timer />
             <div>
-              <h3>Score: {}</h3>
+              <h3>Time Remaining: {this.state.timeRemaining}</h3>
+              <h4>Score: {this.state.score}</h4>
             </div>
-            {/* <h2>Time Limit:</h2>
-            <p>20 seconds</p> */}
           </div>
         </div>
       </div>
     )
   }
 }
-
-export default GamePage;
