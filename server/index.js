@@ -59,32 +59,25 @@ app.post('/sign_up',
     const userEmail = request.body.email;
     const userPassword = request.body.passwordinput;
 
-    //console.log('request inside post', request.body)
-
     const userObject = {
       username,
       userEmail,
       userPassword
     }
 
-    // console.log(userObject);
-
     //save them to the database
     // const newUserReadyForSaving = dbHelpers.dbHelpers.n
     const newUserReadyForSaving = dbHelpers.userSignedUp(userObject);
-    //console.log(newUserReadyForSaving);
 
     dbHelpers.saveUser(newUserReadyForSaving, response);
   });
 
 //handler for submitting parameters for game
 app.post('/gameCreation', (req, res) => {
-  // console.log(req.body, 'cicifidif')
   triviaHelpers.getQuestionsForCategoryAndDifficulty(req.body.categoryId, req.body.difficulty, (err, res, body) => {
     if (err) {
       console.error(err);
     } else {
-      // console.log(body, 'body');
       const parsedBody = JSON.parse(body);
       console.log(parsedBody, 'yo')
       parsedBody.results.forEach(question => {
@@ -109,7 +102,6 @@ app.get('/gameCreation', (req, res) => {
       console.error(err);
     } else {
       const displayedQuestions = data.map(question => {
-        // console.log(question);
         return {
           category: question.category,
           difficulty: question.difficulty,

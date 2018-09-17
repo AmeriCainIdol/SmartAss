@@ -1,29 +1,28 @@
 import React, { Component } from 'react';
-import Answers from './gamePageAnswers.jsx';
-import Questions from './gamePageQuestions.jsx';
 import Choices from './choices.jsx';
 
 export default class GamePage extends Component {
   constructor(props) {
     super(props);
-    console.log(props.history.location.state.state, 'hello');
+    console.log(props)
     this.state = {
       selectedAnswer: null,
       score: 0,
       correctAnswer: 'C',
       timeRemaining: 20,
-      questionsToDisplay: this.props.history.location.state.state,
-      newQuestionOrder: []
+      questionsToDisplay: this.props.history.location.state.state.questions,
+      newQuestionOrder: [],
+      username: this.props.history.location.state.state.username
     }
     this.toggleSelector = this.toggleSelector.bind(this);
     this.selectedColor = this.selectedColor.bind(this);
     this.countdown = this.countdown.bind(this);
     this.reorderQuestions = this.reorderQuestions.bind(this);
+    this.redirectToGameOver = this.redirectToGameOver.bind(this);
   }
   
   toggleSelector(position) {
       this.setState({selectedAnswer: position}, () => {
-        // console.log(Timer.propTypes) 
       })
   }
 
@@ -43,23 +42,21 @@ export default class GamePage extends Component {
     }
   }
   
-  // componentWillUnmount() {
-  //   clearInterval(this.interval);
-  // }
+  redirectToGameOver() {
+    this.props.history.push('/gameOver', {state: this.state.username})
+  }
   
   componentDidMount () {
     this.interval = setInterval(() => this.countdown(), 1000)
-    setInterval(() => {
-      if (this.state.selectedAnswer === this.state.correctAnswer) {
-        this.setState({ score: this.state.score + 1 });
-      }    
-    }, 1000)
+    // setInterval(() => {
+    //   if (this.state.selectedAnswer === this.state.correctAnswer) {
+        // this.setState({ score: this.state.score });
+      // }    
+    // }, 1000)
   }
 
   reorderQuestions () {
-    this.setState({
-      // correctAnswer: this.state.questionsToDisplay.correct_Answer
-    })
+    this.setState({})
   }
 
   componentDidMount() {
@@ -70,9 +67,13 @@ export default class GamePage extends Component {
     return (
       <div className="container-fluid">
         {this.state.questionsToDisplay.map((question, index) => {
-          console.log(question, 'ugh')
           return (<Choices key={index} question={question} />)
         })}
+        <div>
+          <button type="button"
+                  className="btn btn-success"
+                  onClick={this.redirectToGameOver}>Game Over</button>
+        </div>
       </div>
     )
   }

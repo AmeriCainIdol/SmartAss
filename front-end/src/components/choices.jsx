@@ -37,11 +37,11 @@ export default class Choices extends Component {
 
   componentDidMount() {
     this.interval = setInterval(() => this.countdown(), 1000)
-    setInterval(() => {
-      if (this.state.selectedAnswer === this.state.correctAnswer) {
-        this.setState({ score: this.state.score + 1 });
-      }
-    }, 1000)
+    // setInterval(() => {
+    //   if (this.state.selectedAnswer === this.state.correctAnswer) {
+    //     this.setState({ score: this.state.score + 1 });
+    //   }
+    // }, 1000)
   }
 
   render() {
@@ -79,7 +79,7 @@ export default class Choices extends Component {
           <div className="col-md-4">
             <div>
               <h3>Time Remaining: {this.state.timeRemaining}</h3>
-              <h4>Score: {this.state.score}</h4>
+              {/* <h4>Score: {this.state.score}</h4> */}
               <button type="button"
                       className="btn btn-success">Next Question</button>
             </div>

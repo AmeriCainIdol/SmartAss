@@ -21,7 +21,7 @@ export default class SignUp extends React.Component {
     }
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleChange = this.handleChange.bind(this);
-      this.redirectToHomePage = this.redirectToHomePage.bind(this);
+      this.redirectToGameCreation = this.redirectToGameCreation.bind(this);
   }
 
   handleChange(event) {
@@ -63,8 +63,8 @@ export default class SignUp extends React.Component {
       })
   }
 
-  redirectToHomePage() {
-    this.props.history.push('/')
+  redirectToGameCreation() {
+    this.props.history.push('/gameCreation', {state: this.state.username})
   }
 
   render() {
@@ -106,7 +106,7 @@ export default class SignUp extends React.Component {
             </form>
             <button type="submit" 
                     className="btn btn-primary" 
-                    onClick={this.redirectToHomePage}>Return to Home Page</button>
+                    onClick={this.redirectToGameCreation}>Join a Game</button>
           </div>
         </div>
       </div>

@@ -9,13 +9,15 @@ import axios from 'axios';
 export default class GameCreation extends Component {
   constructor(props) {
     super(props);
+    console.log(props)
     this.state = {
       categoryIsOpen: false,
       difficultyIsOpen: false,
       category: '',
       categoryId: null,
       difficulty: '',
-      questions: []
+      questions: [],
+      username: this.props.history.location.state.state
     }
     this.toggleOpenCategory = this.toggleOpenCategory.bind(this);
     this.toggleOpenDifficulty = this.toggleOpenDifficulty.bind(this);
@@ -49,13 +51,12 @@ export default class GameCreation extends Component {
   }
 
   redirectToGamePage() {
-    this.props.history.push('/gamePage', {state: this.state.questions})
+    this.props.history.push('/gamePage', {state: {questions: this.state.questions, username: this.state.username}})
   }
 
   componentDidMount() {
     axios.get('/gameCreation')
       .then(res => {
-        console.log(res, 'squanch')
         this.setState({questions: res.data})
       }).catch(err => {
         console.error(err)
@@ -68,7 +69,7 @@ export default class GameCreation extends Component {
       categoryId: this.state.categoryId,
       difficulty: this.state.difficulty
     }
-    console.log(gameParams, 'fjiewojfwoeif')
+
     axios.post('/gameCreation', gameParams)
       .then(response => {
         console.log(response, 'axios post request from gameCreation page')
@@ -99,7 +100,7 @@ export default class GameCreation extends Component {
               <tbody>
                 <tr>
                   <td>
-                    Player 1
+                    {this.state.username}
                   </td>
                   <td>
                     {this.state.category}

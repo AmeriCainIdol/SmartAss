@@ -15,8 +15,7 @@ export default class Answers extends Component {
   }
 
   toggleSelector(position) {
-    this.setState({ selectedAnswer: position }, () => {
-      // console.log(Timer.propTypes) 
+    this.setState({ selectedAnswer: position }, () => { 
     })
   }
 
@@ -28,9 +27,7 @@ export default class Answers extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-      
-    }, () => {})
+    this.setState({}, () => {})
   }
 
   render () {
