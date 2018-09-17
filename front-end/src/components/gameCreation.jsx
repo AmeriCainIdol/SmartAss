@@ -32,8 +32,6 @@ export default class GameCreation extends Component {
 
   categoryDropdownClick (e) {
     e.preventDefault();
-    console.log(e.target, 'cat')
-    console.log(e.target.name, 'cat')
     this.setState({
       category: e.target.name
     })
@@ -41,8 +39,6 @@ export default class GameCreation extends Component {
 
   difficultyDropdownClick(e) {
     e.preventDefault();
-    console.log(e.target, 'diff')
-    console.log(e.target.name, 'diff')
     this.setState({
       difficulty: e.target.name
     })
@@ -126,7 +122,9 @@ export default class GameCreation extends Component {
             <BrowserRouter>
               <div>
                 <Link to="/gamePage" >
-                  <button type="button" className="btn btn-success" onClick={this.redirectToGamePage}>Create Game</button>
+                  <button type="button" 
+                          className="btn btn-success" 
+                          onClick={this.redirectToGamePage}>Create Game</button>
                 </Link>
               </div>
             </BrowserRouter>
