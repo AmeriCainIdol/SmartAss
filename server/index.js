@@ -32,9 +32,15 @@ app.use(bodyParser.json())
 
 let port = process.env.PORT || 3060;
 
-app.listen(port, function () {
-  console.log(`listening on port ${port}`)
-})
+//NOTE: UNCOMMENT FOR DEVELOPMENT
+// app.listen(port, function () {
+//   console.log(`listening on port ${port}`)
+// })
+
+
+//NOTE: COMMENT THIS OUT FOR DEVELOPMENT
+//THIS IS FOR DEPLOY
+app.listen(port, `142.93.13.248`)
 
 //getting cors to work
 app.use(function (req, res, next) {
@@ -100,11 +106,13 @@ app.get('/gameCreation', (req, res) => {
     } else {
       const displayedQuestions = data.map(question => {
         console.log(question);
-        return { category: question.category,
-                difficulty: question.difficulty,
-                question: question.question,
-                correct_answer: question.correct_answer,
-                incorrect_answers: question.incorrect_answers};
+        return {
+          category: question.category,
+          difficulty: question.difficulty,
+          question: question.question,
+          correct_answer: question.correct_answer,
+          incorrect_answers: question.incorrect_answers
+        };
       })
       res.send(displayedQuestions);
     }
