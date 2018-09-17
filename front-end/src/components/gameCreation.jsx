@@ -52,14 +52,14 @@ export default class GameCreation extends Component {
     this.props.history.push('/gamePage', {state: this.state.questions})
   }
 
-  componentDidMount() {
-    axios.get('/gameCreation')
-      .then(res => {
-        this.setState({questions: res.data})
-      }).catch(err => {
-        console.error(err)
-      })
-  }
+  // componentDidMount() {
+  //   axios.get('/gameCreation')
+  //     .then(res => {
+  //       this.setState({questions: res.data})
+  //     }).catch(err => {
+  //       console.error(err)
+  //     })
+  // }
 
   handleSubmitGameParams(event) {
     event.preventDefault();

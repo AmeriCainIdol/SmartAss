@@ -99,25 +99,25 @@ app.post('/gameCreation', (req, res) => {
 })
 
 //get request to database to retrieve questions
-app.get('/gameCreation', (req, res) => {
-  database.find((err, data) => {
-    if (err) {
-      console.error(err);
-    } else {
-      const displayedQuestions = data.map(question => {
-        console.log(question);
-        return {
-          category: question.category,
-          difficulty: question.difficulty,
-          question: question.question,
-          correct_answer: question.correct_answer,
-          incorrect_answers: question.incorrect_answers
-        };
-      })
-      res.send(displayedQuestions);
-    }
-  })
-})
+// app.get('/gameCreation', (req, res) => {
+//   database.findQuestions((err, data) => {
+//     if (err) {
+//       console.error(err);
+//     } else {
+//       const displayedQuestions = data.map(question => {
+//         console.log(question);
+//         return {
+//           category: question.category,
+//           difficulty: question.difficulty,
+//           question: question.question,
+//           correct_answer: question.correct_answer,
+//           incorrect_answers: question.incorrect_answers
+//         };
+//       })
+//       res.send(displayedQuestions);
+//     }
+//   })
+// })
 //handler for changing the user stats that won the game
 app.post('/gameover',
   (request, response) => {
