@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Answers from './gamePageAnswers.jsx';
 import Questions from './gamePageQuestions.jsx';
+import Choices from './choices.jsx';
 
 export default class GamePage extends Component {
   constructor(props) {
@@ -68,7 +69,11 @@ export default class GamePage extends Component {
   render () {
     return (
       <div className="container-fluid">
-        <div className="row">
+        {this.state.questionsToDisplay.map((question, index) => {
+          console.log(question, 'ugh')
+          return (<Choices key={index} question={question} />)
+        })}
+        {/* <div className="row">
           <div className="col-md-12">
             {this.state.questionsToDisplay.map((question, index) => {
               console.log(question, 'ugh')
@@ -92,7 +97,7 @@ export default class GamePage extends Component {
               <h4>Score: {this.state.score}</h4>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     )
   }

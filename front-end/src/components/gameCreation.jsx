@@ -65,10 +65,10 @@ export default class GameCreation extends Component {
   handleSubmitGameParams(event) {
     event.preventDefault();
     const gameParams = {
-      category: this.state.categoryId,
+      categoryId: this.state.categoryId,
       difficulty: this.state.difficulty
     }
-
+    console.log(gameParams, 'fjiewojfwoeif')
     axios.post('/gameCreation', gameParams)
       .then(response => {
         console.log(response, 'axios post request from gameCreation page')
@@ -151,11 +151,13 @@ export default class GameCreation extends Component {
           <div className="col-md-4">
             <BrowserRouter>
               <div>
+              <button type="button"
+                      className="btn btn-success"
+                      onClick={this.handleSubmitGameParams}>Submit Game Parameters</button>
               <Link to="/gamePage">
                   <button type="button" 
                           className="btn btn-success" 
-                          onClick={this.handleSubmitGameParams}
-                          onClick={this.redirectToGamePage}>Create Game</button>
+                          onClick={this.redirectToGamePage}>Create Game</button> 
                 </Link>
               </div>
             </BrowserRouter>

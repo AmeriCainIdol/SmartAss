@@ -2,7 +2,7 @@ const express = require('express');
 //dbhelpers object
 const dbHelpers = require('../database/databasehelpers').dbHelpers;
 //api helpers object
-const triviaHelpers = require('./trivia_api_helpers');
+const triviaHelpers = require('./trivia_api_helpers').triviaHelpers;
 //access questions database
 const database = require('../database/index');
 const questionsDB = require('../database/questions')
@@ -79,11 +79,16 @@ app.post('/sign_up',
 
 //handler for submitting parameters for game
 app.post('/gameCreation', (req, res) => {
-  triviaHelpers.triviaHelpers.getQuestionsForCategoryAndDifficulty(req.body.category, req.body.difficulty, (err, res, body) => {
+  console.log(req.body, 'cicifidif')
+  triviaHelpers.getQuestionsForCategoryAndDifficulty(req.body.categoryId, req.body.difficulty, (err, res, body) => {
+    console.log(req.body.categoryId, req.body.difficulty, 'vcviviv')
+    console.log(body)
     if (err) {
       console.error(err);
     } else {
+      console.log(body);
       const parsedBody = JSON.parse(body);
+      console.log(parsedBody, 'yo')
       parsedBody.results.forEach(question => {
         questionsDB.save({
           category: question.category,
@@ -99,7 +104,6 @@ app.post('/gameCreation', (req, res) => {
   res.sendStatus(201);
   res.end();
 })
-
 //get request to database to retrieve questions
 app.get('/gameCreation', (req, res) => {
   questionsDB.findQuestions((err, data) => {
