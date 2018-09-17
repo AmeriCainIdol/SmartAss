@@ -56,18 +56,18 @@ const questionsSchema = mongoose.Schema({
 
 const Questions = mongoose.model('Questions', questionsSchema);
 
-const emptyThenInsert = (db) =>{
-  questionsSchema.remove({}, function (err) {
-    if (err) console.log(err);
-    questionsSchema.collection.insert(db, function (err, data) {
-      if (err) console.log(err);
-      questionsSchema.collection.find({}, function (err, data) {
-        if (err) console.log(err);
-      });
-      process.exit(1);
-    });
-  })();
-}
+// const emptyThenInsert = (db) =>{
+//   questionsSchema.remove({}, function (err) {
+//     if (err) console.log(err);
+//     questionsSchema.collection.insert(db, function (err, data) {
+//       if (err) console.log(err);
+//       questionsSchema.collection.find({}, function (err, data) {
+//         if (err) console.log(err);
+//       });
+//       process.exit(1);
+//     });
+//   });
+// }
 const save = data => {
   // db.Questions.remove({});
   const newQuestions = new Questions(data);
@@ -78,11 +78,11 @@ const save = data => {
 }
 
 const User = mongoose.model('User', userSchema);
-const query = Questions.find();
+const queryQuestions = Questions.find();
 const queryUser = User.find();
 
-const find = callback => {
-  query.limit(10).select('category question difficulty question correct_answer incorrect_answers').exec(callback);
+const findQuestions = callback => {
+  queryQuestions.limit(10).select('category question difficulty question correct_answer incorrect_answers').exec(callback);
 }
 
 const findUser = callback => {
@@ -92,6 +92,6 @@ const findUser = callback => {
 module.exports.save = save;
 module.exports.User = User;
 module.exports.Questions = Questions;
-module.exports.find = find;
+module.exports.findQuestions = findQuestions;
 module.exports.findUser = findUser;
-module.exports.emptyThenInsert = emptyThenInsert;
+// module.exports.emptyThenInsert = emptyThenInsert;

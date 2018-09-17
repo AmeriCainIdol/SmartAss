@@ -100,7 +100,7 @@ app.post('/gameCreation', (req, res) => {
 
 //get request to database to retrieve questions
 app.get('/gameCreation', (req, res) => {
-  database.find((err, data) => {
+  database.findQuestions((err, data) => {
     if (err) {
       console.error(err);
     } else {
@@ -130,24 +130,24 @@ app.post('/gameover',
   });
 
 //handler to display users on home page
-// app.get('/', (req, res) => {
-//   database.findUser((err, users) => {
-//     if (err) {
-//       console.error(err);
-//     } else {
-//       const displayedUsers = users.map(user => {
-//         console.log(user);
-//         return {
-//           username: user.username,
-//           averageWinRate: user.averageWinRate,
-//           wins: user.wins,
-//           losses: user.losses
-//         }
-//       })
-//       res.send(displayedUsers);
-//     }
-//   })
-// })
+app.get('/users', (req, res) => {
+  database.findUser((err, users) => {
+    if (err) {
+      console.error(err);
+    } else {
+      const displayedUsers = users.map(user => {
+        console.log(user, 'hello');
+        return {
+          username: user.username,
+          averageWinRate: user.averageWinRate,
+          wins: user.wins,
+          losses: user.losses
+        }
+      })
+      res.send(displayedUsers);
+    }
+  })
+})
 
 
 

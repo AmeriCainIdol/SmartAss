@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import SignUp from './sign_up.jsx';
 import GameCreation from './gameCreation.jsx';
+import Users from './userDisplay.jsx';
 
 export default class Home extends Component {
   constructor(props) {
@@ -22,17 +23,18 @@ export default class Home extends Component {
     this.props.history.push('/gameCreation')
   }
 
-  // componentDidMount() {
-  //   axios.get('/')
-  //     .then(res => {
-  //       // console.log(res)
-  //       this.setState({ users: res.user })
-  //     }).catch(err => {
-  //       console.error(err)
-  //     })
-  // }
+  componentDidMount() {
+    axios.get('/users')
+      .then(res => {
+        console.log(res)
+        this.setState({ users: res.data })
+      }).catch(err => {
+        console.error(err)
+      })
+  }
 
   render () {
+    console.log(this.state.users);
     return (
       <div className="container-fluid">
         <h1>Smart-Ass™</h1>
@@ -52,13 +54,18 @@ export default class Home extends Component {
                       <th>Losses</th>
                     </tr>
                   </thead>
+                    {/* <Users /> */}
                   <tbody>
-                    <tr>
+                    {this.state.users.map((user, index) => {
+                      console.log(user)
+                      return (<Users key={index} user={user}/>)
+                    })}
+                    {/* <tr>
                       <td>Jstrzesz</td>
                       <td>1</td>
                       <td>4</td>
                       <td>0</td>
-                    </tr>
+                    </tr> */}
                   </tbody>
                 </table>
                 <div>
