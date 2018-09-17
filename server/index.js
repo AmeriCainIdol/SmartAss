@@ -66,7 +66,7 @@ app.post('/sign_up',
 
 //handler for submitting parameters for game
 app.post('/gameCreation', (req, res) => {
-  console.log(req);
+  console.log(req.body, 'hello');
   res.send(201);
 })
 

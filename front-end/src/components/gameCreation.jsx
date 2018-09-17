@@ -35,7 +35,8 @@ export default class GameCreation extends Component {
   categoryDropdownClick (e) {
     e.preventDefault();
     this.setState({
-      category: e.target.name
+      category: e.target.name,
+      categoryId: e.target.id
     })
   }
 
@@ -53,7 +54,7 @@ export default class GameCreation extends Component {
   handleSubmitGameParams(event) {
     event.preventDefault();
     const gameParams = {
-      category: this.state.category.id,
+      category: this.state.categoryId,
       difficulty: this.state.difficulty
     }
 
