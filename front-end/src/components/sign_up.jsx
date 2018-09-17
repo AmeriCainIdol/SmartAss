@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-class SignUp extends React.Component {
+export default class SignUp extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -87,8 +87,3 @@ class SignUp extends React.Component {
         )
     }
 }
-
-
-
-
-export default SignUp;

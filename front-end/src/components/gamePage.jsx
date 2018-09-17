@@ -1,33 +1,53 @@
-import React from 'react';
-import Timer from './timer.jsx';
+import React, { Component } from 'react';
 
-class GamePage extends React.Component {
+export default class GamePage extends Component {
   constructor(props) {
     super(props);
+    console.log(props);
     this.state = {
-      answer: null,
-      score: 0
+      selectedAnswer: null,
+      score: 0,
+      correctAnswer: 'C',
+      timeRemaining: 20
     }
     this.toggleSelector = this.toggleSelector.bind(this);
     this.selectedColor = this.selectedColor.bind(this);
-    this.updateScore = this.updateScore.bind(this);
+    this.countdown = this.countdown.bind(this);
   }
   
   toggleSelector(position) {
-      this.setState({answer: position}, () => {
-        console.log(this.state) 
+      this.setState({selectedAnswer: position}, () => {
+        // console.log(Timer.propTypes) 
       })
   }
 
   selectedColor(position) {
-    if (this.state.answer === position) {
+    if (this.state.selectedAnswer === position) {
       return '#87FDFD'
     }
     return '';
   }
 
-  updateScore() {
-    // if (this.state)
+  countdown() {
+    this.setState((prevState) => ({
+      timeRemaining: prevState.timeRemaining - 1
+    }))
+    if (this.state.timeRemaining === 0) {
+      clearInterval(this.interval);
+    }
+  }
+  
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+  
+  componentDidMount () {
+    this.interval = setInterval(() => this.countdown(), 1000)
+    setInterval(() => {
+      if (this.state.selectedAnswer === this.state.correctAnswer) {
+        this.setState({ score: this.state.score + 1 });
+      }    
+    }, 1000)
   }
 
   render () {
@@ -63,9 +83,9 @@ class GamePage extends React.Component {
             </table>
           </div>
           <div className="col-md-4">
-            <Timer />
             <div>
-              <h3>Score: {this.state.score}</h3>
+              <h3>Time Remaining: {this.state.timeRemaining}</h3>
+              <h4>Score: {this.state.score}</h4>
             </div>
           </div>
         </div>
@@ -73,5 +93,3 @@ class GamePage extends React.Component {
     )
   }
 }
-
-export default GamePage;
