@@ -49,7 +49,7 @@ export default class GameCreation extends Component {
   }
 
   redirectToGamePage() {
-    this.props.history.push('/gamePage')
+    this.props.history.push('/gamePage', {state: this.state.questions})
   }
 
   componentDidMount() {
@@ -79,6 +79,7 @@ export default class GameCreation extends Component {
   render () {
     const categoryMenuClass = `dropdown-menu${this.state.categoryIsOpen ? " show" : ""}`;
     const difficultyMenuClass = `dropdown-menu${this.state.difficultyIsOpen ? " show" : ""}`;
+    <GamePage info={this.state}/>
     return (
       <div className="container-fluid">
         <h1>Create Game</h1>
@@ -149,10 +150,11 @@ export default class GameCreation extends Component {
           <div className="col-md-4">
             <BrowserRouter>
               <div>
-                <Link to="/gamePage" >
+              <Link to="/gamePage">
                   <button type="button" 
                           className="btn btn-success" 
-                          onClick={this.handleSubmitGameParams}>Create Game</button>
+                          onClick={this.handleSubmitGameParams}
+                          onClick={this.redirectToGamePage}>Create Game</button>
                 </Link>
               </div>
             </BrowserRouter>

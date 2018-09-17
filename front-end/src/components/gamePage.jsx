@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class GamePage extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
+    console.log(props.history.location.state.state);
     this.state = {
       selectedAnswer: null,
       score: 0,
@@ -49,6 +49,11 @@ export default class GamePage extends Component {
       }    
     }, 1000)
   }
+
+  // componentDidMount() {
+  //   const { params } = this.props.location.state;
+  //   console.log(params)
+  // }
 
   render () {
     return (
