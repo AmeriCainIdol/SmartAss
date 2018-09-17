@@ -8,11 +8,16 @@ export default class Home extends Component {
   constructor(props) {
     super(props);
     console.log(props)
-    this.redirectToTarget = this.redirectToTarget.bind(this);
+    this.redirectToSignUp = this.redirectToSignUp.bind(this);
+    this.redirectToGameCreation = this.redirectToGameCreation.bind(this);
   }
 
-  redirectToTarget () {
+  redirectToSignUp () {
     this.props.history.push('/sign_up')
+  }
+
+  redirectToGameCreation() {
+    this.props.history.push('/gameCreation')
   }
 
   render () {
@@ -44,6 +49,13 @@ export default class Home extends Component {
                     </tr>
                   </tbody>
                 </table>
+                <div>
+                  <BrowserRouter>
+                    <Link to="/gameCreation">
+                      <button type="submit" className="btn btn-primary" onClick={this.redirectToGameCreation}>Create Game</button>
+                    </Link>
+                  </BrowserRouter>
+                </div>
               </div>
 
               <div className="col-md-4">
@@ -68,14 +80,14 @@ export default class Home extends Component {
                     <input type="password" className="form-control" id="PasswordInput" />
                   </div>
                   <button type="submit" className="btn btn-primary">
-                    Submit
+                    Log In
                 </button>
                 </form>
                 <h4>New Players</h4>
                 <h5>Not a player? Sign Up Here </h5>
                 <BrowserRouter>
                   <Link to="/sign_up">
-                    <button type="submit" className="btn btn-primary" onClick={this.redirectToTarget}>Sign Up</button>
+                    <button type="submit" className="btn btn-primary" onClick={this.redirectToSignUp}>Sign Up</button>
                   </Link>
                 </BrowserRouter>
               </div>
