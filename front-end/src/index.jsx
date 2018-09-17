@@ -31,6 +31,7 @@ class App extends Component {
             <Route path="/sign_up" render={props => <SignUp {...props} />}/>
             <Route path="/gameCreation" render={props => <GameCreation {...props} />}/>
             <Route path="/gamePage" render={props => <GamePage {...props} />}/>
+            <Route path="/gameOver" render={props => <GameOver {...props} />} />
           </Switch>
         </div>
       </BrowserRouter>
