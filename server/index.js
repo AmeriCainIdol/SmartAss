@@ -1,6 +1,6 @@
 const express = require('express');
 //dbhelpers object
-const dbHelpers = require('../database/databasehelpers');
+const dbHelpers = require('../database/databasehelpers').dbHelpers;
 //api helpers object
 const triviaHelpers = require('./trivia_api_helpers');
 //access questions database
@@ -55,20 +55,21 @@ app.post('/sign_up',
   (request, response) => {
     //take the info from the fields
     const username = request.body.username;
-    const email = request.body.email;
-    const password = request.body.passwordinput;
+    const userEmail = request.body.email;
+    const userPassword = request.body.passwordinput;
 
     //console.log('request inside post', request.body)
 
     const userObject = {
       username,
-      email,
-      password
+      userEmail,
+      userPassword
     }
 
-    //console.log(userObject);
+    // console.log(userObject);
 
     //save them to the database
+    // const newUserReadyForSaving = dbHelpers.dbHelpers.n
     const newUserReadyForSaving = dbHelpers.userSignedUp(userObject);
     //console.log(newUserReadyForSaving);
 

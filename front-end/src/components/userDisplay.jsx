@@ -5,7 +5,7 @@ export default class Users extends Component {
     super(props);
     console.log(props.user)
   }
-
+//
   render () {
     return (
       <tr>
