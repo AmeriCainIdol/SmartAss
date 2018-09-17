@@ -84,9 +84,9 @@ app.post('/gameCreation', (req, res) => {
     if (err) {
       console.error(err);
     } else {
-      console.log(body, 'body');
+      // console.log(body, 'body');
       const parsedBody = JSON.parse(body);
-      // console.log(parsedBody, 'yo')
+      console.log(parsedBody, 'yo')
       parsedBody.results.forEach(question => {
         questionsDB.save({
           category: question.category,

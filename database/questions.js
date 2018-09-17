@@ -34,6 +34,7 @@ const questionsSchema = mongoose.Schema({
 
 const Questions = mongoose.model('Questions', questionsSchema);
 const save = data => {
+  mongoose.connection.db.dropCollection('questions', (err, result) => {})
   const newQuestions = new Questions(data);
   newQuestions.save(err => {
     if (err) console.error(err);
