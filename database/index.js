@@ -77,15 +77,21 @@ const save = data => {
   })
 }
 
+const User = mongoose.model('User', userSchema);
 const query = Questions.find();
+const queryUser = User.find();
 
 const find = callback => {
   query.limit(10).select('category question difficulty question correct_answer incorrect_answers').exec(callback);
 }
-const User = mongoose.model('User', userSchema);
+
+const findUser = callback => {
+  queryUser.limit(10).select('username averageWinRate wins losses').exec(callback);
+}
 
 module.exports.save = save;
 module.exports.User = User;
 module.exports.Questions = Questions;
 module.exports.find = find;
+module.exports.findUser = findUser;
 module.exports.emptyThenInsert = emptyThenInsert;
