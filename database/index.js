@@ -9,7 +9,7 @@ var db = mongoose.connection;
 // })
 
 //FIXME: remember to add a process.env here for mlabs deploy
-const mongoDB = config.MONGODB_URI;
+const mongoDB = config.MONGODB_URI || process.env.MLAB;
 //process.env.MONGODB_URI;
 //mongoose.Promise = global.Promise;
 mongoose.connect(mongoDB, {
