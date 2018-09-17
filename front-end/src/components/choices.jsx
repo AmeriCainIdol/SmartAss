@@ -7,7 +7,7 @@ export default class Choices extends Component {
       selectedAnswer: null,
       score: 0,
       correctAnswer: null,
-      timeRemaining: 20,
+      timeRemaining: 60,
       newQuestionOrder: []
     }
     this.toggleSelector = this.toggleSelector.bind(this);

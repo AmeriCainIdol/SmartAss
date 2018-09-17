@@ -5,7 +5,7 @@ class GameOver extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      score: 0,
+      score: 7,
       username: this.props.history.location.state.state
     }
     this.redirectToHomePage = this.redirectToHomePage.bind(this);
@@ -27,7 +27,7 @@ class GameOver extends React.Component {
         </div>
         <div className="row">
           <div className="col-md-12">
-            <h3>Ranking:</h3>
+            <h3>Ranking: 1   Score: 7 / 10</h3>
             <ol>
               <li className="list-item">{this.state.username}</li>   
             </ol>

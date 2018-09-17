@@ -13,16 +13,20 @@ export default class GameCreation extends Component {
     this.state = {
       categoryIsOpen: false,
       difficultyIsOpen: false,
+      playersIsOpen: false,
       category: '',
       categoryId: null,
       difficulty: '',
+      numberOfPlayers: 0,
       questions: [],
       username: this.props.history.location.state.state
     }
     this.toggleOpenCategory = this.toggleOpenCategory.bind(this);
     this.toggleOpenDifficulty = this.toggleOpenDifficulty.bind(this);
+    this.toggleOpenPlayers = this.toggleOpenPlayers.bind(this);
     this.categoryDropdownClick = this.categoryDropdownClick.bind(this);
     this.difficultyDropdownClick = this.difficultyDropdownClick.bind(this);
+    this.playersDropdownClick = this.playersDropdownClick.bind(this);
     this.redirectToGamePage = this.redirectToGamePage.bind(this);
     this.handleSubmitGameParams = this.handleSubmitGameParams.bind(this);
   }
@@ -33,6 +37,10 @@ export default class GameCreation extends Component {
 
   toggleOpenDifficulty () {
     this.setState({ difficultyIsOpen: !this.state.difficultyIsOpen })
+  }
+
+  toggleOpenPlayers() {
+    this.setState({ playersIsOpen: !this.state.playersIsOpen })
   }
 
   categoryDropdownClick (e) {
@@ -47,6 +55,14 @@ export default class GameCreation extends Component {
     e.preventDefault();
     this.setState({
       difficulty: e.target.name
+    })
+  }
+
+  playersDropdownClick(e) {
+    e.preventDefault();
+    console.log(e.target, 'playersNumber')
+    this.setState({
+      numberOfPlayers: e.target.name
     })
   }
 
@@ -81,6 +97,7 @@ export default class GameCreation extends Component {
   render () {
     const categoryMenuClass = `dropdown-menu${this.state.categoryIsOpen ? " show" : ""}`;
     const difficultyMenuClass = `dropdown-menu${this.state.difficultyIsOpen ? " show" : ""}`;
+    const playersMenuClass = `dropdown-menu${this.state.playersIsOpen ? " show" : ""}`;
     <GamePage info={this.state}/>
     return (
       <div className="container-fluid">
@@ -93,21 +110,18 @@ export default class GameCreation extends Component {
                   <th>Players In Game</th>
                   <th>Category</th>
                   <th>Difficulty</th>
+                  <th>Number of Players</th>
                   <th>Category Selection</th>
                   <th>Difficulty Selection</th>
+                  <th>Player Selection</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>
-                    {this.state.username}
-                  </td>
-                  <td>
-                    {this.state.category}
-                  </td>
-                  <td>
-                    {this.state.difficulty}
-                  </td>
+                  <td>{this.state.username}</td>
+                  <td>{this.state.category}</td>
+                  <td>{this.state.difficulty}</td>
+                  <td>1</td>
                   <td>
                     <div className="dropdown" onClick={this.toggleOpenCategory}>
                       <button className="btn btn-primary dropdown-toggle"
@@ -141,6 +155,24 @@ export default class GameCreation extends Component {
                                       name={difficulty.level}
                                       key={difficulty.id}
                                       onClick={e => this.difficultyDropdownClick(e)}>{difficulty.level}</a>);
+                        })}
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="dropdown" onClick={this.toggleOpenPlayers}>
+                      <button className="btn btn-primary dropdown-toggle"
+                        type="button"
+                        id="dropdownMenuButton"
+                        data-toggle="dropdown"
+                        aria-haspopup="true">Number of Players</button>
+                      <div className={playersMenuClass} aria-labelledby="dropdownMenuButton">
+                        {triviaHelpers.triviaHelpers.player_count.map(player => {
+                          return (<a className="dropdown-item"
+                            href="#"
+                            name={player.number}
+                            key={player.id}
+                            onClick={e => this.difficultyDropdownClick(e)}>{player.number}</a>);
                         })}
                       </div>
                     </div>
