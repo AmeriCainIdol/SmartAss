@@ -61,7 +61,8 @@ const allQuestionsAllCategories = (callback) => {
 const getQuestionsForCategoryAndDifficulty = (categoryId, difficulty, callback) => {
   let options = {
     method: `GET`,
-    url: `https://opentdb.com/api.php?amount=10&category=${categoryId}&difficulty=${difficulty}$type=multiple`
+    url: `https://opentdb.com/api.php?amount=10&category=${categoryId}&difficulty=${difficulty}&type=multiple`
+    // `https://opentdb.com/api.php?amount=10&category=${categoryId}&difficulty=${difficulty}&type=multiple`
   }
   request(options, callback)
 }

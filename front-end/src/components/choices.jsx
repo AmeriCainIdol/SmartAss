@@ -61,6 +61,8 @@ export default class Choices extends Component {
             <div>
               <h3>Time Remaining: {this.state.timeRemaining}</h3>
               <h4>Score: {this.state.score}</h4>
+              <button type="button"
+                      className="btn btn-success">Next Question</button>
             </div>
           </div>
         </div>

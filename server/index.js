@@ -79,16 +79,14 @@ app.post('/sign_up',
 
 //handler for submitting parameters for game
 app.post('/gameCreation', (req, res) => {
-  console.log(req.body, 'cicifidif')
+  // console.log(req.body, 'cicifidif')
   triviaHelpers.getQuestionsForCategoryAndDifficulty(req.body.categoryId, req.body.difficulty, (err, res, body) => {
-    console.log(req.body.categoryId, req.body.difficulty, 'vcviviv')
-    console.log(body)
     if (err) {
       console.error(err);
     } else {
-      console.log(body);
+      console.log(body, 'body');
       const parsedBody = JSON.parse(body);
-      console.log(parsedBody, 'yo')
+      // console.log(parsedBody, 'yo')
       parsedBody.results.forEach(question => {
         questionsDB.save({
           category: question.category,
