@@ -10,7 +10,7 @@ export default class GamePage extends Component {
     this.state = {
       selectedAnswer: null,
       score: 0,
-      correctAnswer: null,
+      correctAnswer: 'C',
       timeRemaining: 20,
       questionsToDisplay: this.props.history.location.state.state,
       newQuestionOrder: []
@@ -73,31 +73,6 @@ export default class GamePage extends Component {
           console.log(question, 'ugh')
           return (<Choices key={index} question={question} />)
         })}
-        {/* <div className="row">
-          <div className="col-md-12">
-            {this.state.questionsToDisplay.map((question, index) => {
-              console.log(question, 'ugh')
-              return (<Questions key={index} question={question}/>)
-            })}
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-8">
-            <table className="table">
-              {this.state.questionsToDisplay.map((question, index) => {
-                console.log(question, 'ugh')
-                return (<Answers key={index} question={question} />)
-              })}
-            </table>
-          </div>
-          
-          <div className="col-md-4">
-            <div>
-              <h3>Time Remaining: {this.state.timeRemaining}</h3>
-              <h4>Score: {this.state.score}</h4>
-            </div>
-          </div>
-        </div> */}
       </div>
     )
   }
