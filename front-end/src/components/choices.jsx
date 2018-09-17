@@ -12,6 +12,7 @@ export default class Choices extends Component {
     }
     this.toggleSelector = this.toggleSelector.bind(this);
     this.selectedColor = this.selectedColor.bind(this);
+    this.countdown = this.countdown.bind(this);
   }
 
   toggleSelector(position) {
@@ -23,6 +24,24 @@ export default class Choices extends Component {
       return '#87FDFD'
     }
     return '';
+  }
+
+  countdown() {
+    this.setState((prevState) => ({
+      timeRemaining: prevState.timeRemaining - 1
+    }))
+    if (this.state.timeRemaining === 0) {
+      clearInterval(this.interval);
+    }
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => this.countdown(), 1000)
+    setInterval(() => {
+      if (this.state.selectedAnswer === this.state.correctAnswer) {
+        this.setState({ score: this.state.score + 1 });
+      }
+    }, 1000)
   }
 
   render() {
