@@ -14,7 +14,8 @@ export default class GameCreation extends Component {
       difficultyIsOpen: false,
       category: '',
       categoryId: null,
-      difficulty: ''
+      difficulty: '',
+      questions: []
     }
     this.toggleOpenCategory = this.toggleOpenCategory.bind(this);
     this.toggleOpenDifficulty = this.toggleOpenDifficulty.bind(this);
@@ -49,6 +50,15 @@ export default class GameCreation extends Component {
 
   redirectToGamePage() {
     this.props.history.push('/gamePage')
+  }
+
+  componentDidMount() {
+    axios.get('/gameCreation')
+      .then(res => {
+        this.setState({questions: res.data})
+      }).catch(err => {
+        console.error(err)
+      })
   }
 
   handleSubmitGameParams(event) {
