@@ -46,9 +46,35 @@ const userSchema = mongoose.Schema({
 });
 
 const questionsSchema = mongoose.Schema({
+<<<<<<< HEAD
 
+=======
+  category: String,
+  type: String,
+  difficulty: String,
+  question: String,
+  correct_answer: String,
+  incorrect_answers: Array
+>>>>>>> 46846f830dc661a1b62821148fd7cbf327940dd5
 })
 
+const Questions = mongoose.model('Questions', questionsSchema);
+
+const save = data => {
+  const newQuestions = new Questions(data);
+  newQuestions.save(err => {
+    if (err) console.error(err);
+  })
+}
+
+const query = Questions.find();
+
+const find = callback => {
+  query.limit(10).select('category question difficulty question correct_answer incorrect_answers').exec(callback);
+}
 const User = mongoose.model('User', userSchema);
 
+module.exports.save = save;
 module.exports.User = User;
+module.exports.Questions = Questions;
+module.exports.find = find;
