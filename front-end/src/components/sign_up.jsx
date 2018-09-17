@@ -21,7 +21,11 @@ export default class SignUp extends React.Component {
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+<<<<<<< HEAD
         //this.validatePasswords = this.validatePasswords(this);
+=======
+        this.redirectToHomePage = this.redirectToHomePage.bind(this);
+>>>>>>> 8574f3a22b86de220af072150da4efe0eba5470b
     }
 
     handleChange(event) {
@@ -64,6 +68,10 @@ export default class SignUp extends React.Component {
             })
     }
 
+    redirectToHomePage() {
+        this.props.history.push('/')
+    }
+
     render() {
         return (
             <div className="container-fluid">
@@ -94,15 +102,25 @@ export default class SignUp extends React.Component {
                             </div>
 
                             <div className="form-group">
-                                <label id="passwordInput2">
-                                    Re-Enter Password to confirm
-					                      </label>
-                                <input type="password" name="passwordinput2" className="form-control" id="passwordInputSign-InConfirm" onChange={this.handleChange} />
+                                <label id="passwordInput2">Re-Enter Password to confirm</label>
+                                <input  type="password" 
+                                        name="passwordinput2" 
+                                        className="form-control" 
+                                        id="passwordInputSign-InConfirm" 
+                                        onChange={this.handleChange} />
                             </div>
+<<<<<<< HEAD
                             <button type="submit" className="btn btn-primary" disabled={this.state.formValid} onSubmit={this.state.readyToGame = true}>
                                 Submit
                             </button>
+=======
+
+                            <button type="submit" className="btn btn-primary">Submit</button>
+>>>>>>> 8574f3a22b86de220af072150da4efe0eba5470b
                         </form>
+                            <button type="submit" 
+                                    className="btn btn-primary" 
+                                    onClick={this.redirectToHomePage}>Return to Home Page</button>
                     </div>
                 </div>
             </div>
