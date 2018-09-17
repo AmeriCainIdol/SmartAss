@@ -64,6 +64,12 @@ app.post('/sign_up',
     dbHelpers.saveUser(newUserReadyForSaving, response);
   });
 
+//handler for submitting parameters for game
+app.post('/gameCreation', (req, res) => {
+  console.log(req.body, 'hello');
+  res.send(201);
+})
+
 
 //handler for changing the user stats that won the game
 app.post('/gameover',

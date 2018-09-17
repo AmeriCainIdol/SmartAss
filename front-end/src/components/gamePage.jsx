@@ -37,9 +37,9 @@ export default class GamePage extends Component {
     }
   }
   
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
+  // componentWillUnmount() {
+  //   clearInterval(this.interval);
+  // }
   
   componentDidMount () {
     this.interval = setInterval(() => this.countdown(), 1000)

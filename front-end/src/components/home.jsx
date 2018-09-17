@@ -3,11 +3,9 @@ import { BrowserRouter, Route, Link } from 'react-router-dom';
 import SignUp from './sign_up.jsx';
 import GameCreation from './gameCreation.jsx';
 
-
 export default class Home extends Component {
   constructor(props) {
     super(props);
-    console.log(props)
     this.redirectToSignUp = this.redirectToSignUp.bind(this);
     this.redirectToGameCreation = this.redirectToGameCreation.bind(this);
   }
@@ -52,7 +50,9 @@ export default class Home extends Component {
                 <div>
                   <BrowserRouter>
                     <Link to="/gameCreation">
-                      <button type="submit" className="btn btn-primary" onClick={this.redirectToGameCreation}>Create Game</button>
+                      <button type="submit" 
+                              className="btn btn-primary" 
+                              onClick={this.redirectToGameCreation}>Create Game</button>
                     </Link>
                   </BrowserRouter>
                 </div>
@@ -62,32 +62,26 @@ export default class Home extends Component {
                 <h3>Log In</h3>
                 <form role="form">
                   <div className="form-group">
-                    <label>
-                      Username
-                  </label>
+                    <label>Username</label>
                     <input type="email" className="form-control" id="UsernameInput" />
                   </div>
                   <div className="form-group">
-                    <label>
-                      Email address
-                  </label>
+                    <label>Email address</label>
                     <input type="email" className="form-control" id="EmailInput" />
                   </div>
                   <div className="form-group">
-                    <label>
-                      Password
-                  </label>
+                    <label>Password</label>
                     <input type="password" className="form-control" id="PasswordInput" />
                   </div>
-                  <button type="submit" className="btn btn-primary">
-                    Log In
-                </button>
+                  <button type="submit" className="btn btn-primary">Log In</button>
                 </form>
                 <h4>New Players</h4>
                 <h5>Not a player? Sign Up Here </h5>
                 <BrowserRouter>
                   <Link to="/sign_up">
-                    <button type="submit" className="btn btn-primary" onClick={this.redirectToSignUp}>Sign Up</button>
+                    <button type="submit" 
+                            className="btn btn-primary" 
+                            onClick={this.redirectToSignUp}>Sign Up</button>
                   </Link>
                 </BrowserRouter>
               </div>

@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Link, Route } from 'react-router-dom';
 import GamePage from './gamePage.jsx';
 import request from 'request';
 import triviaHelpers from '../../../server/trivia_api_helpers.js';
+import axios from 'axios';
 
 
 export default class GameCreation extends Component {
@@ -20,6 +21,7 @@ export default class GameCreation extends Component {
     this.categoryDropdownClick = this.categoryDropdownClick.bind(this);
     this.difficultyDropdownClick = this.difficultyDropdownClick.bind(this);
     this.redirectToGamePage = this.redirectToGamePage.bind(this);
+    this.handleSubmitGameParams = this.handleSubmitGameParams.bind(this);
   }
 
   toggleOpenCategory () {
@@ -32,17 +34,14 @@ export default class GameCreation extends Component {
 
   categoryDropdownClick (e) {
     e.preventDefault();
-    console.log(e.target, 'cat')
-    console.log(e.target.name, 'cat')
     this.setState({
-      category: e.target.name
+      category: e.target.name,
+      categoryId: e.target.id
     })
   }
 
   difficultyDropdownClick(e) {
     e.preventDefault();
-    console.log(e.target, 'diff')
-    console.log(e.target.name, 'diff')
     this.setState({
       difficulty: e.target.name
     })
@@ -50,6 +49,21 @@ export default class GameCreation extends Component {
 
   redirectToGamePage() {
     this.props.history.push('/gamePage')
+  }
+
+  handleSubmitGameParams(event) {
+    event.preventDefault();
+    const gameParams = {
+      category: this.state.categoryId,
+      difficulty: this.state.difficulty
+    }
+
+    axios.post('/gameCreation', gameParams)
+      .then(response => {
+        console.log(response, 'axios post request from gameCreation page')
+      }).catch(error => {
+        console.error(error);
+      })
   }
   
   render () {
@@ -126,7 +140,9 @@ export default class GameCreation extends Component {
             <BrowserRouter>
               <div>
                 <Link to="/gamePage" >
-                  <button type="button" className="btn btn-success" onClick={this.redirectToGamePage}>Create Game</button>
+                  <button type="button" 
+                          className="btn btn-success" 
+                          onClick={this.handleSubmitGameParams}>Create Game</button>
                 </Link>
               </div>
             </BrowserRouter>
