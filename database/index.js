@@ -46,16 +46,12 @@ const userSchema = mongoose.Schema({
 });
 
 const questionsSchema = mongoose.Schema({
-<<<<<<< HEAD
-
-=======
   category: String,
   type: String,
   difficulty: String,
   question: String,
   correct_answer: String,
   incorrect_answers: Array
->>>>>>> 46846f830dc661a1b62821148fd7cbf327940dd5
 })
 
 const Questions = mongoose.model('Questions', questionsSchema);
