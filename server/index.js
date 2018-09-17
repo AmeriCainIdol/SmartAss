@@ -3,6 +3,8 @@ const express = require('express');
 const dbHelpers = require('../database/databasehelpers');
 //api helpers object
 const triviaHelpers = require('./trivia_api_helpers');
+//access questions database
+const questionsDB = require('../database/questions');
 //require cors
 const cors = require('cors');
 
@@ -75,11 +77,20 @@ app.post('/gameCreation', (req, res) => {
     } else {
       const parsedBody = JSON.parse(body);
       console.log(parsedBody, '007')
-
-
+      parsedBody.results.forEach(question => {
+        questionsDB.save({
+          category: question.category,
+          type: question.type,
+          difficulty: question.difficulty,
+          question: question.question,
+          correct_answer: question.correct_answer,
+          incorrect_answers: question.incorrect_answers
+        })
+      })
     }
   })
-  res.send(201);
+  res.sendStatus(201);
+  res.end();
 })
 
 
