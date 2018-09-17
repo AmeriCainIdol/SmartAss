@@ -15,7 +15,7 @@ const mongoDB = process.env.MLAB;
 mongoose.connect(mongoDB, {
   keepAlive: true,
   reconnectTries: Number.MAX_VALUE,
-  //deprecation warning fix
+  //deprecation warning fix12
   useNewUrlParser: true,
 });
 //deprecation warning fix
