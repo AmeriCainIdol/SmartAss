@@ -45,16 +45,16 @@ const userSchema = mongoose.Schema({
   averageWinRate: Number,
 });
 
-const questionsSchema = mongoose.Schema({
-  category: String,
-  type: String,
-  difficulty: String,
-  question: String,
-  correct_answer: String,
-  incorrect_answers: Array
-})
+// const questionsSchema = mongoose.Schema({
+//   category: String,
+//   type: String,
+//   difficulty: String,
+//   question: String,
+//   correct_answer: String,
+//   incorrect_answers: Array
+// })
 
-const Questions = mongoose.model('Questions', questionsSchema);
+// const Questions = mongoose.model('Questions', questionsSchema);
 
 // const emptyThenInsert = (db) =>{
 //   questionsSchema.remove({}, function (err) {
@@ -68,30 +68,32 @@ const Questions = mongoose.model('Questions', questionsSchema);
 //     });
 //   });
 // }
-const save = data => {
-  // db.Questions.remove({});
-  const newQuestions = new Questions(data);
+// const save = data => {
+//   mongoose.connection.db.dropCollection('questions', (err, result)=> {
 
-  newQuestions.save(err => {
-    if (err) console.error(err);
-  })
-}
+//   })
+//   const newQuestions = new Questions(data);
+
+//   newQuestions.save(err => {
+//     if (err) console.error(err);
+//   })
+// }
 
 const User = mongoose.model('User', userSchema);
-const queryQuestions = Questions.find();
+// const queryQuestions = Questions.find();
 const queryUser = User.find();
 
-const findQuestions = callback => {
-  queryQuestions.limit(10).select('category question difficulty question correct_answer incorrect_answers').exec(callback);
-}
+// const findQuestions = callback => {
+//   queryQuestions.limit(10).select('category question difficulty question correct_answer incorrect_answers').exec(callback);
+// }
 
 const findUser = callback => {
   queryUser.limit(10).select('username averageWinRate wins losses').exec(callback);
 }
 
-module.exports.save = save;
+// module.exports.save = save;
 module.exports.User = User;
-module.exports.Questions = Questions;
-module.exports.findQuestions = findQuestions;
+// module.exports.Questions = Questions;
+// module.exports.findQuestions = findQuestions;
 module.exports.findUser = findUser;
 // module.exports.emptyThenInsert = emptyThenInsert;

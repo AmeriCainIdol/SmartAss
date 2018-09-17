@@ -26,7 +26,7 @@ export default class Home extends Component {
   componentDidMount() {
     axios.get('/users')
       .then(res => {
-        console.log(res)
+        // console.log(res)
         this.setState({ users: res.data })
       }).catch(err => {
         console.error(err)
@@ -34,7 +34,7 @@ export default class Home extends Component {
   }
 
   render () {
-    console.log(this.state.users);
+    // console.log(this.state.users);
     return (
       <div className="container-fluid">
         <h1>Smart-Ass™</h1>
@@ -57,7 +57,7 @@ export default class Home extends Component {
                     {/* <Users /> */}
                   <tbody>
                     {this.state.users.map((user, index) => {
-                      console.log(user)
+                      // console.log(user)
                       return (<Users key={index} user={user}/>)
                     })}
                     {/* <tr>

@@ -2,9 +2,10 @@ const express = require('express');
 //dbhelpers object
 const dbHelpers = require('../database/databasehelpers').dbHelpers;
 //api helpers object
-const triviaHelpers = require('./trivia_api_helpers');
+const triviaHelpers = require('./trivia_api_helpers').triviaHelpers;
 //access questions database
 const database = require('../database/index');
+const questionsDB = require('../database/questions')
 //require cors
 const cors = require('cors');
 
@@ -78,13 +79,16 @@ app.post('/sign_up',
 
 //handler for submitting parameters for game
 app.post('/gameCreation', (req, res) => {
-  triviaHelpers.triviaHelpers.getQuestionsForCategoryAndDifficulty(req.body.category, req.body.difficulty, (err, res, body) => {
+  // console.log(req.body, 'cicifidif')
+  triviaHelpers.getQuestionsForCategoryAndDifficulty(req.body.categoryId, req.body.difficulty, (err, res, body) => {
     if (err) {
       console.error(err);
     } else {
+      console.log(body, 'body');
       const parsedBody = JSON.parse(body);
+      // console.log(parsedBody, 'yo')
       parsedBody.results.forEach(question => {
-        database.save({
+        questionsDB.save({
           category: question.category,
           type: question.type,
           difficulty: question.difficulty,
@@ -98,15 +102,14 @@ app.post('/gameCreation', (req, res) => {
   res.sendStatus(201);
   res.end();
 })
-
 //get request to database to retrieve questions
 app.get('/gameCreation', (req, res) => {
-  database.findQuestions((err, data) => {
+  questionsDB.findQuestions((err, data) => {
     if (err) {
       console.error(err);
     } else {
       const displayedQuestions = data.map(question => {
-        console.log(question);
+        // console.log(question);
         return {
           category: question.category,
           difficulty: question.difficulty,
@@ -137,7 +140,6 @@ app.get('/users', (req, res) => {
       console.error(err);
     } else {
       const displayedUsers = users.map(user => {
-        console.log(user, 'hello');
         return {
           username: user.username,
           averageWinRate: user.averageWinRate,
