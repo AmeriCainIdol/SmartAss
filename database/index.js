@@ -44,6 +44,9 @@ const userSchema = mongoose.Schema({
   averageWinRate: Number,
 });
 
+const questionsSchema = mongoose.Schema({
+  
+})
 
 const User = mongoose.model('User', userSchema);
 

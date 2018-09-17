@@ -1,8 +1,11 @@
 const express = require('express');
 //dbhelpers object
-const dbHelpers = require('../database/databasehelpers').dbHelpers;
+const dbHelpers = require('../database/databasehelpers');
+//api helpers object
+const triviaHelpers = require('./trivia_api_helpers');
 //require cors
 const cors = require('cors');
+
 
 //morgan will intercept http requests and log them in terminal
 const morgan = require('morgan');
@@ -25,7 +28,7 @@ app.use(bodyParser.json())
 
 
 
-let port = process.env.PORT || 80;
+let port = process.env.PORT || 3060;
 
 app.listen(port, function () {
   console.log(`listening on port ${port}`)
@@ -66,7 +69,16 @@ app.post('/sign_up',
 
 //handler for submitting parameters for game
 app.post('/gameCreation', (req, res) => {
-  console.log(req.body, 'hello');
+  triviaHelpers.triviaHelpers.getQuestionsForCategoryAndDifficulty(req.body.category, req.body.difficulty, (err, res, body) => {
+    if (err) {
+      console.error(err);
+    } else {
+      const parsedBody = JSON.parse(body);
+      console.log(parsedBody, '007')
+
+
+    }
+  })
   res.send(201);
 })
 
