@@ -38,6 +38,7 @@ app.use(function (req, res, next) {
   next();
 });
 
+
 //handler for signing up
 app.post('/sign_up',
   (request, response) => {
@@ -60,11 +61,7 @@ app.post('/sign_up',
     const newUserReadyForSaving = dbHelpers.userSignedUp(userObject);
     //console.log(newUserReadyForSaving);
 
-    dbHelpers.saveUser(newUserReadyForSaving);
-
-    //redirect user to login page
-    response.status(201, 'OK');
-    response.end();
+    dbHelpers.saveUser(newUserReadyForSaving, response);
   });
 
 
@@ -79,17 +76,6 @@ app.post('/gameover',
     response.end();
   });
 
-app.get('/', (request, response) => {
-  res.send('works')
-
-})
 
 
-// handler for logging in
-// app.get('/login', (req, res) => {
-//   res.render('login');
-    // search database for user
-    // authenticate user session
-    // redirect to game page
-  // })
 

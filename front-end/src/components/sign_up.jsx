@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Route, Redirect } from 'react-router'
 
 export default class SignUp extends React.Component {
     constructor(props) {
@@ -9,16 +10,43 @@ export default class SignUp extends React.Component {
             email: '',
             passwordinput: '',
             passwordinput2: '',
+            //unique user validation
+            userIsUnique: false,
+            //redirect to game creation
+            readyToGame: false,
+            //password validation
+            // passwordValidationErrors: { passwordInput: '', passwordInput2: '' },
+            // passwordValid: false,
+            formValid: false,
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+<<<<<<< HEAD
+        //this.validatePasswords = this.validatePasswords(this);
+=======
         this.redirectToHomePage = this.redirectToHomePage.bind(this);
+>>>>>>> 8574f3a22b86de220af072150da4efe0eba5470b
     }
 
     handleChange(event) {
-        console.log({ [event.target.name]: event.target.value });
+        //console.log(event.target.name, event.target.value);
         this.setState({ [event.target.name]: event.target.value });
+        //get the state in password input fields
+        const newUser = {
+            email: this.state.email,
+            passwordinput: this.state.passwordinput,
+            passwordinput2: this.state.passwordinput2,
+        }
+        //make sure they match
+        if (newUser.passwordinput === newUser.passwordinput2) {
+            this.setState({ formValid: true })
+        } else {
+            //change state in form valid
+            this.setState({ formValid: false })
+        }
     }
+
+
 
     handleSubmit(event) {
         event.preventDefault();
@@ -28,14 +56,13 @@ export default class SignUp extends React.Component {
             passwordinput: this.state.passwordinput,
             passwordinput2: this.state.passwordinput2
         }
-        //FIXME: passwords need to match before moving on!
 
-        //const userReadyForPost = JSON.stringify(newUser);
-        //console.log(newUser);
+        //console.log(passwordinput, passwordinput2)
+
         axios.post('/sign_up', newUser)
             .then((response) => {
-                //console.log(userReadyForPost)
                 console.log('axios post from form submit on signup:', response);
+                //response.redirect('/');
             }).catch(error => {
                 console.log(error);
             })
@@ -82,8 +109,14 @@ export default class SignUp extends React.Component {
                                         id="passwordInputSign-InConfirm" 
                                         onChange={this.handleChange} />
                             </div>
+<<<<<<< HEAD
+                            <button type="submit" className="btn btn-primary" disabled={this.state.formValid} onSubmit={this.state.readyToGame = true}>
+                                Submit
+                            </button>
+=======
 
                             <button type="submit" className="btn btn-primary">Submit</button>
+>>>>>>> 8574f3a22b86de220af072150da4efe0eba5470b
                         </form>
                             <button type="submit" 
                                     className="btn btn-primary" 

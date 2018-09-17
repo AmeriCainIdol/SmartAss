@@ -21,13 +21,17 @@ const userSignedUp = (userObject) => {
 //NOTE: take the object that userSignedUp created and pass into this function
 //save a new user into the database
 
-const saveUser = (userObject) => {
+const saveUser = (userObject, response) => {
   const newUser = new User(userObject);
   newUser.save(error => {
     if (error) {
       console.log(`error saving user into database saveuser function ${error}`)
     } else {
       console.log(`successfully saved user into database`)
+      //redirect user to login page
+      response.status(201, 'OK');
+      response.redirect('/');
+      response.end();
     }
   })
 }

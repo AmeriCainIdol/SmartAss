@@ -9,7 +9,7 @@ var db = mongoose.connection;
 // })
 
 //FIXME: remember to add a process.env here for mlabs deploy
-const mongoDB = config.MONGODB_URI;
+const mongoDB = config.MONGODB_URI || process.env.MLAB;
 //process.env.MONGODB_URI;
 //mongoose.Promise = global.Promise;
 mongoose.connect(mongoDB, {
@@ -19,6 +19,7 @@ mongoose.connect(mongoDB, {
   useNewUrlParser: true,
 });
 //deprecation warning fix
+
 mongoose.set('useCreateIndex', true);
 
 
@@ -31,13 +32,10 @@ db.once('open', function () {
 });
 
 const userSchema = mongoose.Schema({
-  //this will give us no duplicates
-  user_id: {
-    type: Number,
-    unique: true,
-    index: true
+  username: {
+    type: String,
+    unique: true
   },
-  username: String,
   userEmail: String,
   userPassword: String,
   wins: Number,
