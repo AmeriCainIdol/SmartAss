@@ -1,3 +1,4 @@
 node_modules
 config
 mlabInfo.js
+package-lock.json

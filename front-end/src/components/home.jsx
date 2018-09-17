@@ -7,6 +7,12 @@ import GameCreation from './gameCreation.jsx';
 export default class Home extends Component {
   constructor(props) {
     super(props);
+    console.log(props)
+    this.redirectToTarget = this.redirectToTarget.bind(this);
+  }
+
+  redirectToTarget () {
+    this.props.history.push('/sign_up')
   }
 
   render () {
@@ -69,7 +75,7 @@ export default class Home extends Component {
                 <h5>Not a player? Sign Up Here </h5>
                 <BrowserRouter>
                   <Link to="/sign_up">
-                    <button type="submit" className="btn btn-primary">Sign Up</button>
+                    <button type="submit" className="btn btn-primary" onClick={this.redirectToTarget}>Sign Up</button>
                   </Link>
                 </BrowserRouter>
               </div>
