@@ -3,16 +3,19 @@ import React, { Component } from 'react';
 export default class GamePage extends Component {
   constructor(props) {
     super(props);
-    console.log(props.history.location.state.state);
+    // console.log(props.history.location.state.state);
     this.state = {
       selectedAnswer: null,
       score: 0,
       correctAnswer: 'C',
-      timeRemaining: 20
+      timeRemaining: 20,
+      questionsToDisplay: this.props.history.location.state.state,
+      newQuestionOrder: []
     }
     this.toggleSelector = this.toggleSelector.bind(this);
     this.selectedColor = this.selectedColor.bind(this);
     this.countdown = this.countdown.bind(this);
+    this.reorderQuestions = this.reorderQuestions.bind(this);
   }
   
   toggleSelector(position) {
@@ -50,10 +53,15 @@ export default class GamePage extends Component {
     }, 1000)
   }
 
-  // componentDidMount() {
-  //   const { params } = this.props.location.state;
-  //   console.log(params)
-  // }
+  reorderQuestions () {
+    this.setState({
+      correctAnswer: this.state.questionsToDisplay.correct_Answer
+    })
+  }
+
+  componentDidMount() {
+    this.setState({correctAnswer: this.state.questionsToDisplay.correct_Answer}, () => {})
+  }
 
   render () {
     return (
@@ -61,7 +69,7 @@ export default class GamePage extends Component {
         <div className="row">
           <div className="col-md-12">
             <h2>Question #</h2>
-            <p>What real-world event is thought to be the inspiration for the destruction of Atlantis?</p>
+            <p>{this.state.questionsToDisplay[0].question}</p>
           </div>
         </div>
         <div className="row">
@@ -70,7 +78,7 @@ export default class GamePage extends Component {
               <tbody>
                 <tr className="first-option">
                   <td style={{ background: this.selectedColor('A') }} onClick={() => this.toggleSelector('A')}>A</td>
-                  <td style={{ background: this.selectedColor('A') }} onClick={() => this.toggleSelector('A')}>Eruption of Mount Vesuvius</td>
+                  <td style={{ background: this.selectedColor('A') }} onClick={() => this.toggleSelector('A')}></td>
                 </tr>
                 <tr className="second-option">
                   <td style={{ background: this.selectedColor('B') }} onClick={() => this.toggleSelector('B')}>B</td>

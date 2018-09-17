@@ -55,8 +55,22 @@ const questionsSchema = mongoose.Schema({
 
 const Questions = mongoose.model('Questions', questionsSchema);
 
+const emptyThenInsert = (db) =>{
+  questionsSchema.remove({}, function (err) {
+    if (err) console.log(err);
+    questionsSchema.collection.insert(db, function (err, data) {
+      if (err) console.log(err);
+      questionsSchema.collection.find({}, function (err, data) {
+        if (err) console.log(err);
+      });
+      process.exit(1);
+    });
+  })();
+}
 const save = data => {
+  // db.Questions.remove({});
   const newQuestions = new Questions(data);
+
   newQuestions.save(err => {
     if (err) console.error(err);
   })
@@ -73,3 +87,4 @@ module.exports.save = save;
 module.exports.User = User;
 module.exports.Questions = Questions;
 module.exports.find = find;
+module.exports.emptyThenInsert = emptyThenInsert;
