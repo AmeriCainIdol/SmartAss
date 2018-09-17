@@ -55,6 +55,7 @@ export default class GameCreation extends Component {
   componentDidMount() {
     axios.get('/gameCreation')
       .then(res => {
+        console.log(res, 'squanch')
         this.setState({questions: res.data})
       }).catch(err => {
         console.error(err)

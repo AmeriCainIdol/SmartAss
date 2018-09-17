@@ -5,6 +5,7 @@ const dbHelpers = require('../database/databasehelpers').dbHelpers;
 const triviaHelpers = require('./trivia_api_helpers');
 //access questions database
 const database = require('../database/index');
+const questionsDB = require('../database/questions')
 //require cors
 const cors = require('cors');
 
@@ -84,7 +85,7 @@ app.post('/gameCreation', (req, res) => {
     } else {
       const parsedBody = JSON.parse(body);
       parsedBody.results.forEach(question => {
-        database.save({
+        questionsDB.save({
           category: question.category,
           type: question.type,
           difficulty: question.difficulty,
@@ -101,12 +102,12 @@ app.post('/gameCreation', (req, res) => {
 
 //get request to database to retrieve questions
 app.get('/gameCreation', (req, res) => {
-  database.findQuestions((err, data) => {
+  questionsDB.findQuestions((err, data) => {
     if (err) {
       console.error(err);
     } else {
       const displayedQuestions = data.map(question => {
-        console.log(question);
+        // console.log(question);
         return {
           category: question.category,
           difficulty: question.difficulty,
@@ -137,7 +138,6 @@ app.get('/users', (req, res) => {
       console.error(err);
     } else {
       const displayedUsers = users.map(user => {
-        console.log(user, 'hello');
         return {
           username: user.username,
           averageWinRate: user.averageWinRate,

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 export default class Answers extends Component {
   constructor(props) {
     super(props);
+    
     this.state = {
       selectedAnswer: null,
       score: 0,
@@ -15,9 +16,7 @@ export default class Answers extends Component {
   }
 
   toggleSelector(position) {
-    this.setState({ selectedAnswer: position }, () => {
-      // console.log(Timer.propTypes) 
-    })
+    this.setState({ selectedAnswer: position }, () => {})
   }
 
   selectedColor(position) {
@@ -28,9 +27,7 @@ export default class Answers extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-      
-    }, () => {})
+    this.setState({ correctAnswer: this.props.question.correct_answer }, () => {})
   }
 
   render () {

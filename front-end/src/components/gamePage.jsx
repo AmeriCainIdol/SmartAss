@@ -57,7 +57,7 @@ export default class GamePage extends Component {
 
   reorderQuestions () {
     this.setState({
-      correctAnswer: this.state.questionsToDisplay.correct_Answer
+      // correctAnswer: this.state.questionsToDisplay.correct_Answer
     })
   }
 

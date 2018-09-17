@@ -22,9 +22,7 @@ const userSignedUp = (userObject) => {
 //save a new user into the database
 
 const saveUser = (userObject, response) => {
-  console.log(userObject, 'userObject')
   const newUser = new User(userObject);
-  console.log(newUser, 'newUser')
   newUser.save(error => {
     if (error) {
       console.log(`error saving user into database saveuser function ${error}`)

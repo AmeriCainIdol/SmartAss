@@ -40,10 +40,12 @@ const save = data => {
   })
 }
 
-const find = callback => {
+const query = Questions.find();
+
+const findQuestions = callback => {
   query.limit(10).select('category question difficulty question correct_answer incorrect_answers').exec(callback);
 }
 
 module.exports.Questions = Questions;
 module.exports.save = save;
-module.exports.find = find;
+module.exports.findQuestions = findQuestions;
