@@ -20,13 +20,12 @@ export default class Home extends Component {
   }
 
   redirectToGameCreation() {
-    this.props.history.push('/gameCreation')
+    this.props.history.push('/gameCreation', {state: this.state.users})
   }
 
   componentDidMount() {
     axios.get('/users')
       .then(res => {
-        // console.log(res)
         this.setState({ users: res.data })
       }).catch(err => {
         console.error(err)
@@ -34,7 +33,6 @@ export default class Home extends Component {
   }
 
   render () {
-    // console.log(this.state.users);
     return (
       <div className="container-fluid">
         <h1>Smart-Ass™</h1>
@@ -54,18 +52,10 @@ export default class Home extends Component {
                       <th>Losses</th>
                     </tr>
                   </thead>
-                    {/* <Users /> */}
                   <tbody>
                     {this.state.users.map((user, index) => {
-                      // console.log(user)
                       return (<Users key={index} user={user}/>)
                     })}
-                    {/* <tr>
-                      <td>Jstrzesz</td>
-                      <td>1</td>
-                      <td>4</td>
-                      <td>0</td>
-                    </tr> */}
                   </tbody>
                 </table>
                 <div>

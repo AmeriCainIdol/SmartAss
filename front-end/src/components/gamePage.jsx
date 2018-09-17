@@ -4,7 +4,6 @@ import Choices from './choices.jsx';
 export default class GamePage extends Component {
   constructor(props) {
     super(props);
-    console.log(props.history.location.state.state, 'hello');
     this.state = {
       selectedAnswer: null,
       score: 0,
@@ -22,7 +21,6 @@ export default class GamePage extends Component {
   
   toggleSelector(position) {
       this.setState({selectedAnswer: position}, () => {
-        // console.log(Timer.propTypes) 
       })
   }
 
@@ -45,9 +43,6 @@ export default class GamePage extends Component {
   redirectToGameOver() {
     this.props.history.push('/gameOver')
   }
-  // componentWillUnmount() {
-  //   clearInterval(this.interval);
-  // }
   
   componentDidMount () {
     this.interval = setInterval(() => this.countdown(), 1000)
@@ -59,9 +54,7 @@ export default class GamePage extends Component {
   }
 
   reorderQuestions () {
-    this.setState({
-      // correctAnswer: this.state.questionsToDisplay.correct_Answer
-    })
+    this.setState({})
   }
 
   componentDidMount() {

@@ -9,6 +9,7 @@ import axios from 'axios';
 export default class GameCreation extends Component {
   constructor(props) {
     super(props);
+    console.log(props)
     this.state = {
       categoryIsOpen: false,
       difficultyIsOpen: false,
@@ -55,7 +56,6 @@ export default class GameCreation extends Component {
   componentDidMount() {
     axios.get('/gameCreation')
       .then(res => {
-        console.log(res, 'squanch')
         this.setState({questions: res.data})
       }).catch(err => {
         console.error(err)
@@ -68,7 +68,7 @@ export default class GameCreation extends Component {
       categoryId: this.state.categoryId,
       difficulty: this.state.difficulty
     }
-    console.log(gameParams, 'fjiewojfwoeif')
+
     axios.post('/gameCreation', gameParams)
       .then(response => {
         console.log(response, 'axios post request from gameCreation page')

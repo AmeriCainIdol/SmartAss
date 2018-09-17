@@ -18,6 +18,7 @@ export default class SignUp extends React.Component {
         // passwordValidationErrors: { passwordInput: '', passwordInput2: '' },
         // passwordValid: false,
       formValid: false,
+      user: ''
     }
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleChange = this.handleChange.bind(this);

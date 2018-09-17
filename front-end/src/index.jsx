@@ -17,10 +17,6 @@ class App extends Component {
     }
   }
 
-  signUp() {
-
-  }
-
   render() {
     return (
       <BrowserRouter>
