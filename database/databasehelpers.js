@@ -30,7 +30,7 @@ const saveUser = (userObject, response) => {
       console.log(`successfully saved user into database`)
       //redirect user to login page
       response.status(201, 'OK');
-      response.redirect('redirectTest')
+      response.redirect('/');
       response.end();
     }
   })

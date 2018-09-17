@@ -27,8 +27,6 @@ app.use(bodyParser.json())
 
 let port = process.env.PORT || 3060;
 
-let redirectTest = `localhost:3060`
-
 app.listen(port, function () {
   console.log(`listening on port ${port}`)
 })
@@ -39,6 +37,7 @@ app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
+
 
 //handler for signing up
 app.post('/sign_up',
@@ -77,14 +76,6 @@ app.post('/gameover',
     response.end();
   });
 
-app.get('*', redirectTest);
 
 
-// handler for logging in
-// app.get('/login', (req, res) => {
-//   res.render('login');
-    // search database for user
-    // authenticate user session
-    // redirect to game page
-  // })
 

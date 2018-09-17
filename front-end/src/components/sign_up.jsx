@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Route, Redirect } from 'react-router'
 
 class SignUp extends React.Component {
     constructor(props) {
@@ -11,7 +12,8 @@ class SignUp extends React.Component {
             passwordinput2: '',
             //unique user validation
             userIsUnique: false,
-
+            //redirect to game creation
+            readyToGame: false,
             //password validation
             // passwordValidationErrors: { passwordInput: '', passwordInput2: '' },
             // passwordValid: false,
@@ -56,6 +58,7 @@ class SignUp extends React.Component {
         axios.post('/sign_up', newUser)
             .then((response) => {
                 console.log('axios post from form submit on signup:', response);
+                //response.redirect('/');
             }).catch(error => {
                 console.log(error);
             })
@@ -96,10 +99,9 @@ class SignUp extends React.Component {
 					                      </label>
                                 <input type="password" name="passwordinput2" className="form-control" id="passwordInputSign-InConfirm" onChange={this.handleChange} />
                             </div>
-                            <button type="submit" className="btn btn-primary" disabled={this.state.formValid}>
+                            <button type="submit" className="btn btn-primary" disabled={this.state.formValid} onSubmit={this.state.readyToGame = true}>
                                 Submit
-				                    </button>
-
+                            </button>
                         </form>
                     </div>
                 </div>
