@@ -58,7 +58,6 @@ export default class SignUp extends React.Component {
     axios.post('/sign_up', newUser)
       .then((response) => {
         console.log('axios post from form submit on signup:', response);
-                //response.redirect('/');
       }).catch(error => {
         console.log(error);
       })
