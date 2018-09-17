@@ -25,7 +25,7 @@ app.use(bodyParser.json())
 
 
 
-let port = process.env.PORT || 3060;
+let port = process.env.PORT || 80;
 
 app.listen(port, function () {
   console.log(`listening on port ${port}`)
