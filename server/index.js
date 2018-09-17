@@ -4,7 +4,7 @@ const dbHelpers = require('../database/databasehelpers');
 //api helpers object
 const triviaHelpers = require('./trivia_api_helpers');
 //access questions database
-const questionsDB = require('../database/index');
+const database = require('../database/index');
 //require cors
 const cors = require('cors');
 
@@ -33,14 +33,14 @@ app.use(bodyParser.json())
 let port = process.env.PORT || 3060;
 
 //NOTE: UNCOMMENT FOR DEVELOPMENT
-// app.listen(port, function () {
-//   console.log(`listening on port ${port}`)
-// })
+app.listen(port, function () {
+  console.log(`listening on port ${port}`)
+})
 
 
 //NOTE: COMMENT THIS OUT FOR DEVELOPMENT
 //THIS IS FOR DEPLOY
-app.listen(port, `142.93.13.248`)
+// app.listen(port, `142.93.13.248`)
 
 //getting cors to work
 app.use(function (req, res, next) {
@@ -83,7 +83,7 @@ app.post('/gameCreation', (req, res) => {
     } else {
       const parsedBody = JSON.parse(body);
       parsedBody.results.forEach(question => {
-        questionsDB.save({
+        database.save({
           category: question.category,
           type: question.type,
           difficulty: question.difficulty,
@@ -100,7 +100,7 @@ app.post('/gameCreation', (req, res) => {
 
 //get request to database to retrieve questions
 app.get('/gameCreation', (req, res) => {
-  questionsDB.find((err, data) => {
+  database.find((err, data) => {
     if (err) {
       console.error(err);
     } else {
@@ -128,6 +128,26 @@ app.post('/gameover',
     console.log(response.body);
     response.end();
   });
+
+//handler to display users on home page
+// app.get('/', (req, res) => {
+//   database.findUser((err, users) => {
+//     if (err) {
+//       console.error(err);
+//     } else {
+//       const displayedUsers = users.map(user => {
+//         console.log(user);
+//         return {
+//           username: user.username,
+//           averageWinRate: user.averageWinRate,
+//           wins: user.wins,
+//           losses: user.losses
+//         }
+//       })
+//       res.send(displayedUsers);
+//     }
+//   })
+// })
 
 
 

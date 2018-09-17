@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
+import axios from 'axios';
 import SignUp from './sign_up.jsx';
 import GameCreation from './gameCreation.jsx';
 
 export default class Home extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      users: []
+    }
     this.redirectToSignUp = this.redirectToSignUp.bind(this);
     this.redirectToGameCreation = this.redirectToGameCreation.bind(this);
   }
@@ -17,6 +21,16 @@ export default class Home extends Component {
   redirectToGameCreation() {
     this.props.history.push('/gameCreation')
   }
+
+  // componentDidMount() {
+  //   axios.get('/')
+  //     .then(res => {
+  //       // console.log(res)
+  //       this.setState({ users: res.user })
+  //     }).catch(err => {
+  //       console.error(err)
+  //     })
+  // }
 
   render () {
     return (
