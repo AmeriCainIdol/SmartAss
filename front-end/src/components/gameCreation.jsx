@@ -16,7 +16,8 @@ export default class GameCreation extends Component {
       category: '',
       categoryId: null,
       difficulty: '',
-      questions: []
+      questions: [],
+      username: this.props.history.location.state.state
     }
     this.toggleOpenCategory = this.toggleOpenCategory.bind(this);
     this.toggleOpenDifficulty = this.toggleOpenDifficulty.bind(this);
@@ -50,7 +51,7 @@ export default class GameCreation extends Component {
   }
 
   redirectToGamePage() {
-    this.props.history.push('/gamePage', {state: this.state.questions})
+    this.props.history.push('/gamePage', {state: {questions: this.state.questions, username: this.state.username}})
   }
 
   componentDidMount() {
@@ -99,7 +100,7 @@ export default class GameCreation extends Component {
               <tbody>
                 <tr>
                   <td>
-                    Player 1
+                    {this.state.username}
                   </td>
                   <td>
                     {this.state.category}

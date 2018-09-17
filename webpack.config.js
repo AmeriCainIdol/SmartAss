@@ -19,6 +19,12 @@ const config = {
           presets: ['react', 'es2015']
         }
       }
+    ],
+    loaders: [
+      {
+        test: /\.(png|jpg)$/,
+        loader: 'url?limit=25000'
+      }
     ] 
   },
   node: {

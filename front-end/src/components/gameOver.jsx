@@ -6,7 +6,7 @@ class GameOver extends React.Component {
     super(props);
     this.state = {
       score: 0,
-      image: ''
+      username: this.props.history.location.state.state
     }
     this.redirectToHomePage = this.redirectToHomePage.bind(this);
   }
@@ -20,15 +20,16 @@ class GameOver extends React.Component {
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
-            <h2>You Won! / You Lost!</h2>
-            <p>Here's a cookie! / No cookie for you!</p>
+            <h2>You Won</h2>
+            <p>Here's a cookie!</p>
+            <h3>ERRoR: The Cookies are a Lie!!!11!!1!!!</h3>
           </div>
         </div>
         <div className="row">
           <div className="col-md-12">
             <h3>Ranking:</h3>
             <ol>
-              <li className="list-item">Player 1</li>   
+              <li className="list-item">{this.state.username}</li>   
             </ol>
           </div>
         </div>

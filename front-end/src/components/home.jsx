@@ -9,18 +9,25 @@ export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: []
+      users: [],
+      username: ''
     }
     this.redirectToSignUp = this.redirectToSignUp.bind(this);
     this.redirectToGameCreation = this.redirectToGameCreation.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   redirectToSignUp () {
     this.props.history.push('/sign_up')
   }
 
+  handleChange(event) {
+    this.setState({ [event.target.name]: event.target.value })
+    console.log(this.state);
+  }
+
   redirectToGameCreation() {
-    this.props.history.push('/gameCreation', {state: this.state.users})
+    this.props.history.push('/gameCreation', {state: {users: this.state.users, username: this.state.username}})
   }
 
   componentDidMount() {
@@ -30,6 +37,10 @@ export default class Home extends Component {
       }).catch(err => {
         console.error(err)
       })
+  }
+
+  logIn() {
+    this.setState({username: ''})
   }
 
   render () {
@@ -74,7 +85,7 @@ export default class Home extends Component {
                 <form role="form">
                   <div className="form-group">
                     <label>Username</label>
-                    <input type="email" className="form-control" id="UsernameInput" />
+                    <input type="email" className="form-control" id="UsernameInput" onChange={this.handleChange}/>
                   </div>
                   <div className="form-group">
                     <label>Email address</label>
@@ -84,7 +95,9 @@ export default class Home extends Component {
                     <label>Password</label>
                     <input type="password" className="form-control" id="PasswordInput" />
                   </div>
-                  <button type="submit" className="btn btn-primary">Log In</button>
+                  <button type="submit" 
+                          className="btn btn-primary"
+                          onClick={this.redirectToGameCreation}>Log In</button>
                 </form>
                 <h4>New Players</h4>
                 <h5>Not a player? Sign Up Here </h5>

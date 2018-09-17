@@ -4,13 +4,15 @@ import Choices from './choices.jsx';
 export default class GamePage extends Component {
   constructor(props) {
     super(props);
+    console.log(props)
     this.state = {
       selectedAnswer: null,
       score: 0,
       correctAnswer: 'C',
       timeRemaining: 20,
-      questionsToDisplay: this.props.history.location.state.state,
-      newQuestionOrder: []
+      questionsToDisplay: this.props.history.location.state.state.questions,
+      newQuestionOrder: [],
+      username: this.props.history.location.state.state.username
     }
     this.toggleSelector = this.toggleSelector.bind(this);
     this.selectedColor = this.selectedColor.bind(this);
@@ -41,7 +43,7 @@ export default class GamePage extends Component {
   }
   
   redirectToGameOver() {
-    this.props.history.push('/gameOver')
+    this.props.history.push('/gameOver', {state: this.state.username})
   }
   
   componentDidMount () {
