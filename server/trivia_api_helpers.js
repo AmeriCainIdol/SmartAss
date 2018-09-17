@@ -37,6 +37,13 @@ const difficulty_levels = [
   {id: 2, level: 'medium'}, 
   {id: 3, level: 'hard'}
 ];
+
+const player_count = [
+  { id: 1, number: 1 },
+  { id: 2, number: 2 },
+  { id: 3, number: 3 },
+  { id: 4, number: 4 },
+]
 //counts each question in a category
 const countQuestionsPerCategory = (categoryId, callback) => {
   let options = {
@@ -71,7 +78,8 @@ const triviaHelpers = {
   allQuestionsAllCategories,
   getQuestionsForCategoryAndDifficulty,
   trivia_categories,
-  difficulty_levels
+  difficulty_levels,
+  player_count
 }
 
 module.exports.triviaHelpers = triviaHelpers;
