@@ -58,6 +58,6 @@
     "react-router-dom": "^4.3.1",
     "request": "^2.88.0",
     "webpack": "^4.4.0",
-    "webpack-cli": "^3.1.0"
+    "webpack-cli": "^3.3.12"
   }
 }
